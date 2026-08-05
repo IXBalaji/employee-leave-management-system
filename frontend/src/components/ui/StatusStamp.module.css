@@ -1,0 +1,59 @@
+.stamp {
+  --stamp-rotate: -4deg;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm);
+  transform: rotate(var(--stamp-rotate));
+  white-space: nowrap;
+}
+
+.positive {
+  color: var(--color-teal);
+  background: var(--color-teal-surface);
+  border: 2px solid var(--color-teal);
+}
+
+.pending {
+  --stamp-rotate: 3deg;
+  color: var(--color-amber);
+  background: var(--color-amber-surface);
+  border: 2px dashed var(--color-amber);
+}
+
+.negative {
+  --stamp-rotate: -3deg;
+  color: var(--color-rust);
+  background: var(--color-rust-surface);
+  border: 2px dotted var(--color-rust);
+}
+
+.neutral {
+  --stamp-rotate: 2deg;
+  color: var(--color-slate);
+  background: var(--color-slate-surface);
+  border: 3px double var(--color-slate);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .stamp {
+    animation: stamp-in var(--duration-base) var(--ease-out);
+  }
+}
+
+@keyframes stamp-in {
+  from {
+    opacity: 0;
+    transform: rotate(var(--stamp-rotate)) scale(1.4);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(var(--stamp-rotate)) scale(1);
+  }
+}

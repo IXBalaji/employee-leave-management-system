@@ -1,0 +1,33 @@
+.wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.select {
+  appearance: none;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-ink);
+  background: var(--color-surface-raised);
+  border: 1.5px solid var(--color-rule-strong);
+  border-radius: var(--radius-md);
+  padding: 0.55rem 2rem 0.55rem 0.7rem;
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+
+.select:hover {
+  border-color: var(--color-ink-muted);
+}
+
+.select[aria-invalid='true'] {
+  border-color: var(--color-rust);
+}
+
+.chevron {
+  position: absolute;
+  right: 0.7rem;
+  color: var(--color-ink-muted);
+  pointer-events: none;
+}

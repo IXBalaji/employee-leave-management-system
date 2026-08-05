@@ -1,0 +1,88 @@
+import { useState } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import { useAuth } from '../../features/auth/AuthContext';
+import { visibleSections } from './nav';
+import styles from './AppShell.module.css';
+
+export function AppShell() {
+  const { user, logout } = useAuth();
+  const [navOpen, setNavOpen] = useState(false);
+
+  if (!user) return null;
+  const sections = visibleSections(user.role);
+  const initials = `${user.firstName[0]}${user.lastName[0]}`;
+
+  return (
+    <div className={styles.shell}>
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+
+      <header className={styles.topbar}>
+        <button
+          type="button"
+          className={styles.navToggle}
+          aria-expanded={navOpen}
+          aria-controls="primary-nav"
+          onClick={() => setNavOpen((v) => !v)}
+        >
+          <svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+            <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
+          </svg>
+          <span className="visually-hidden">Toggle navigation menu</span>
+        </button>
+        <span className={styles.brand}>ELMS</span>
+        <div className={styles.topbarSpacer} />
+        <div className={styles.userMenu}>
+          {user.photoUrl ? (
+            // Decorative: the person's name is always shown right next to this photo,
+            // so a screen reader doesn't need the image described again.
+            <img src={user.photoUrl} alt="" className={styles.avatarPhoto} />
+          ) : (
+            <span className={styles.avatar} aria-hidden="true">
+              {initials}
+            </span>
+          )}
+          <span className={styles.userInfo}>
+            <span className={styles.userName}>
+              {user.firstName} {user.lastName}
+            </span>
+            <span className={styles.userRole}>{user.role}</span>
+          </span>
+          <button type="button" className={styles.logout} onClick={logout}>
+            Sign out
+          </button>
+        </div>
+      </header>
+
+      <nav
+        id="primary-nav"
+        aria-label="Primary"
+        className={`${styles.sidebar} ${navOpen ? styles.sidebarOpen : ''}`}
+      >
+        {sections.map((section) => (
+          <div key={section.title} className={styles.navSection}>
+            <h2 className={styles.navSectionTitle}>{section.title}</h2>
+            <ul className={styles.navList}>
+              {section.items.map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    className={({ isActive }) => `${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+                    onClick={() => setNavOpen(false)}
+                  >
+                    {item.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+
+      <main id="main-content" className={styles.main} tabIndex={-1}>
+        <Outlet />
+      </main>
+    </div>
+  );
+}

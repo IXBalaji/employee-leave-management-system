@@ -1,0 +1,167 @@
+stages:
+  - verify
+  - build
+  - migrate
+  - deploy
+
+variables:
+  # Azure App Service Linux runs Debian-based images. Building on a Debian
+  # (glibc) image here — instead of Alpine (musl) — keeps the Prisma query
+  # engine binary that gets zipped up compatible with the deploy target.
+  NODE_IMAGE: node:20-bookworm-slim
+  AZ_CLI_IMAGE: mcr.microsoft.com/azure-cli:latest
+
+# ---------------------------------------------------------------------------
+# Verify — typecheck every branch/MR, no deploy credentials needed.
+# ---------------------------------------------------------------------------
+
+backend:typecheck:
+  stage: verify
+  image: $NODE_IMAGE
+  cache:
+    key: backend-npm
+    paths:
+      - backend/node_modules/
+  script:
+    - cd backend
+    - npm ci
+    - npx tsc --noEmit
+
+frontend:typecheck:
+  stage: verify
+  image: $NODE_IMAGE
+  cache:
+    key: frontend-npm
+    paths:
+      - frontend/node_modules/
+  script:
+    - cd frontend
+    - npm ci
+    - npx tsc -b
+
+# ---------------------------------------------------------------------------
+# Build — only on the default branch, produces deployable artifacts.
+# ---------------------------------------------------------------------------
+
+backend:build:
+  stage: build
+  image: $NODE_IMAGE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  cache:
+    key: backend-npm
+    paths:
+      - backend/node_modules/
+  script:
+    - apt-get update -qq && apt-get install -y -qq zip
+    - cd backend
+    - npm ci
+    - npx prisma generate
+    - npm run build
+    # Ship pre-installed node_modules so Azure doesn't need to run its own
+    # Oryx build step — SCM_DO_BUILD_DURING_DEPLOYMENT is set to false below.
+    - zip -r ../backend-artifact.zip package.json package-lock.json dist prisma node_modules
+  artifacts:
+    paths:
+      - backend-artifact.zip
+    expire_in: 1 day
+
+frontend:build:
+  stage: build
+  image: $NODE_IMAGE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  cache:
+    key: frontend-npm
+    paths:
+      - frontend/node_modules/
+  variables:
+    # Baked into the static bundle at build time — set this CI/CD variable
+    # to the backend's public Azure URL, e.g. https://<app-name>.azurewebsites.net/api
+    VITE_API_URL: $PRODUCTION_API_URL
+  script:
+    - cd frontend
+    - npm ci
+    - npm run build
+  artifacts:
+    paths:
+      - frontend/dist
+    expire_in: 1 day
+
+# ---------------------------------------------------------------------------
+# Migrate — apply Prisma migrations to the production database before the
+# new backend code (which may depend on the new schema) goes live.
+# ---------------------------------------------------------------------------
+
+backend:migrate:
+  stage: migrate
+  image: $NODE_IMAGE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  needs:
+    - backend:build
+  cache:
+    key: backend-npm
+    paths:
+      - backend/node_modules/
+  variables:
+    DATABASE_URL: $PRODUCTION_DATABASE_URL
+  script:
+    - cd backend
+    - npm ci
+    - npx prisma migrate deploy
+  environment:
+    name: production
+
+# ---------------------------------------------------------------------------
+# Deploy
+# ---------------------------------------------------------------------------
+
+backend:deploy:
+  stage: deploy
+  image: $AZ_CLI_IMAGE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  needs:
+    - backend:build
+    - backend:migrate
+  script:
+    - az login --service-principal -u "$AZURE_CLIENT_ID" -p "$AZURE_CLIENT_SECRET" --tenant "$AZURE_TENANT_ID"
+    - az account set --subscription "$AZURE_SUBSCRIPTION_ID"
+    - >
+      az webapp config appsettings set
+      --resource-group "$AZURE_RESOURCE_GROUP"
+      --name "$AZURE_WEBAPP_NAME"
+      --settings
+      SCM_DO_BUILD_DURING_DEPLOYMENT=false
+      WEBSITE_NODE_DEFAULT_VERSION=~20
+      DATABASE_URL="$PRODUCTION_DATABASE_URL"
+      JWT_SECRET="$PRODUCTION_JWT_SECRET"
+      PORT=8080
+    - >
+      az webapp config set
+      --resource-group "$AZURE_RESOURCE_GROUP"
+      --name "$AZURE_WEBAPP_NAME"
+      --startup-file "node dist/index.js"
+    - >
+      az webapp deploy
+      --resource-group "$AZURE_RESOURCE_GROUP"
+      --name "$AZURE_WEBAPP_NAME"
+      --src-path backend-artifact.zip
+      --type zip
+  environment:
+    name: production
+    url: https://$AZURE_WEBAPP_NAME.azurewebsites.net
+
+frontend:deploy:
+  stage: deploy
+  image: $NODE_IMAGE
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+  needs:
+    - frontend:build
+  script:
+    - npm install -g @azure/static-web-apps-cli
+    - swa deploy ./frontend/dist --deployment-token "$AZURE_STATIC_WEB_APPS_API_TOKEN" --env production
+  environment:
+    name: production

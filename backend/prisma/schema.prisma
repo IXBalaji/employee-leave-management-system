@@ -1,0 +1,207 @@
+generator client {
+  provider      = "prisma-client-js"
+  // "native" covers local dev; the debian targets cover Azure App Service
+  // Linux, whose OpenSSL version has changed across image updates.
+  binaryTargets = ["native", "debian-openssl-1.1.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  EMPLOYEE
+  MANAGER
+  HR
+  ADMIN
+}
+
+enum EmployeeStatus {
+  ACTIVE
+  ON_LEAVE
+  INACTIVE
+}
+
+enum EmploymentType {
+  FULL_TIME
+  CONTRACT
+  INTERN
+}
+
+enum Gender {
+  FEMALE
+  MALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum MaritalStatus {
+  SINGLE
+  MARRIED
+  OTHER
+}
+
+enum AccrualFrequency {
+  MONTHLY
+  ANNUAL
+  NONE
+}
+
+enum LeaveRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum HalfDaySession {
+  FIRST_HALF
+  SECOND_HALF
+}
+
+model Department {
+  id            String      @id @default(cuid())
+  name          String      @unique
+  headEmployeeId String?
+  head          Employee?   @relation("DepartmentHead", fields: [headEmployeeId], references: [id])
+  employees     Employee[]  @relation("DepartmentEmployees")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+model Employee {
+  id                        String          @id @default(cuid())
+  employeeCode              String          @unique
+
+  // Basic Info
+  firstName                 String
+  lastName                  String
+  photoUrl                  String?
+  dob                       DateTime?
+  gender                    Gender?
+  bloodGroup                String?
+  maritalStatus             MaritalStatus?
+
+  // Contact
+  personalEmail             String?
+  workEmail                 String          @unique
+  phone                     String?
+  currentAddress            String?
+  permanentAddress          String?
+
+  // Job Details
+  departmentId              String?
+  department                Department?     @relation("DepartmentEmployees", fields: [departmentId], references: [id])
+  designation               String?
+  employmentType             EmploymentType @default(FULL_TIME)
+  workLocation               String?
+  dateOfJoining               DateTime?
+  reportingManagerId          String?
+  reportingManager             Employee?    @relation("ManagerReports", fields: [reportingManagerId], references: [id])
+  directReports                Employee[]   @relation("ManagerReports")
+
+  // Statutory & Payroll
+  govIdNumber                  String?
+  bankName                     String?
+  bankAccountNumber            String?
+  bankIfsc                     String?
+
+  // Emergency Contact
+  emergencyContactName          String?
+  emergencyContactRelationship  String?
+  emergencyContactPhone         String?
+
+  // Leave Policy
+  leavePolicyId                 String?
+  leavePolicy                   LeavePolicy? @relation(fields: [leavePolicyId], references: [id])
+
+  // Auth / meta
+  passwordHash                  String
+  role                          Role         @default(EMPLOYEE)
+  status                        EmployeeStatus @default(ACTIVE)
+
+  departmentsHeaded              Department[] @relation("DepartmentHead")
+  leaveBalances                   LeaveBalance[]
+  leaveRequests                    LeaveRequest[]        @relation("RequestOwner")
+  approvedRequests                 LeaveRequest[]        @relation("RequestApprover")
+
+  createdAt                        DateTime     @default(now())
+  updatedAt                        DateTime     @updatedAt
+}
+
+model LeaveType {
+  id               String   @id @default(cuid())
+  name             String   @unique
+  isPaid           Boolean  @default(true)
+  requiresApproval Boolean  @default(true)
+  policyRules      LeavePolicyRule[]
+  leaveBalances    LeaveBalance[]
+  leaveRequests    LeaveRequest[]
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model LeavePolicy {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  rules       LeavePolicyRule[]
+  employees   Employee[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model LeavePolicyRule {
+  id                String            @id @default(cuid())
+  leavePolicyId     String
+  leavePolicy       LeavePolicy       @relation(fields: [leavePolicyId], references: [id], onDelete: Cascade)
+  leaveTypeId       String
+  leaveType         LeaveType         @relation(fields: [leaveTypeId], references: [id])
+  annualDays        Float
+  accrualFrequency  AccrualFrequency  @default(ANNUAL)
+  maxCarryForward   Float             @default(0)
+
+  @@unique([leavePolicyId, leaveTypeId])
+}
+
+model LeaveBalance {
+  id          String   @id @default(cuid())
+  employeeId  String
+  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+  leaveTypeId String
+  leaveType   LeaveType @relation(fields: [leaveTypeId], references: [id])
+  year        Int
+  allocated   Float
+  used        Float    @default(0)
+
+  @@unique([employeeId, leaveTypeId, year])
+}
+
+model LeaveRequest {
+  id                String              @id @default(cuid())
+  employeeId        String
+  employee          Employee            @relation("RequestOwner", fields: [employeeId], references: [id], onDelete: Cascade)
+  leaveTypeId       String
+  leaveType         LeaveType           @relation(fields: [leaveTypeId], references: [id])
+  startDate         DateTime
+  endDate           DateTime
+  isHalfDay         Boolean             @default(false)
+  halfDaySession    HalfDaySession?
+  reason            String
+  status            LeaveRequestStatus  @default(PENDING)
+  approverId        String?
+  approver          Employee?           @relation("RequestApprover", fields: [approverId], references: [id])
+  approverComments  String?
+  appliedAt         DateTime            @default(now())
+  decidedAt         DateTime?
+}
+
+model Holiday {
+  id       String   @id @default(cuid())
+  name     String
+  date     DateTime
+  location String   @default("All")
+
+  @@unique([name, date])
+}

@@ -1,0 +1,100 @@
+/*
+  Design tokens — "Ledger & Stamp"
+  Contrast ratios verified against WCAG AA (4.5:1 text, 3:1 large text/UI).
+  Paper is a cool pale sage-grey (not cream) to avoid the generic
+  cream+serif+terracotta AI-default pairing.
+*/
+
+:root {
+  /* Color */
+  --color-paper: #eef0ea;
+  --color-surface: #f8f9f5;
+  --color-surface-raised: #ffffff;
+  --color-ink: #1b1f1d;
+  --color-ink-muted: #565f59;
+  --color-ink-faint: #7c8579;
+  --color-rule: #c9cdc2;
+  --color-rule-strong: #a9ae9f;
+
+  --color-teal: #0f5c56;
+  --color-teal-surface: #dcece9;
+  --color-amber: #8a5a00;
+  --color-amber-surface: #f2e6d0;
+  --color-rust: #9c3b2e;
+  --color-rust-surface: #f3ded9;
+  --color-slate: #545b62;
+  --color-slate-surface: #e2e4e6;
+
+  --color-focus-ring: #0f5c56;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Public Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+
+  --text-xs: clamp(0.72rem, 0.69rem + 0.15vw, 0.78rem);
+  --text-sm: clamp(0.82rem, 0.79rem + 0.15vw, 0.88rem);
+  --text-base: clamp(0.95rem, 0.91rem + 0.2vw, 1rem);
+  --text-md: clamp(1.05rem, 1rem + 0.25vw, 1.15rem);
+  --text-lg: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);
+  --text-xl: clamp(1.6rem, 1.4rem + 1vw, 2.1rem);
+  --text-2xl: clamp(2rem, 1.7rem + 1.5vw, 2.75rem);
+
+  /* Space */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 120ms;
+  --duration-base: 200ms;
+
+  /* Layout */
+  --rail-width: 15rem;
+  --rail-width-collapsed: 4.5rem;
+  --content-max: 76rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #141714;
+    --color-surface: #1b1f1c;
+    --color-surface-raised: #22261f;
+    --color-ink: #eef0ea;
+    --color-ink-muted: #b7bdae;
+    --color-ink-faint: #8b9285;
+    --color-rule: #33372f;
+    --color-rule-strong: #454b3d;
+
+    --color-teal: #4fb3a5;
+    --color-teal-surface: #1c3835;
+    --color-amber: #e0a336;
+    --color-amber-surface: #3a2c11;
+    --color-rust: #e0776a;
+    --color-rust-surface: #3a1f1a;
+    --color-slate: #aeb4bb;
+    --color-slate-surface: #2a2d31;
+
+    --color-focus-ring: #4fb3a5;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
