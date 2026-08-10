@@ -51,7 +51,7 @@ export function LoginPage() {
           ELMS
         </div>
         <h1 className={styles.title}>Sign in</h1>
-        <p className={styles.subtitle}>Employee Leave Management System</p>
+        <p style={{ color: '#c8c8c8', fontSize: 'var(--text-sm)' }}>Employee Leave Management System</p>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
           {formError ? (

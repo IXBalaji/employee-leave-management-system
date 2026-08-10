@@ -51,21 +51,23 @@ export function DashboardPage() {
 
       <div className={styles.statRow}>
         {isManagerish ? (
-          <Link to="/leave/approvals" className={styles.statCard}>
+          <a href="/leave/approvals" className={styles.statCard}>
             <span className={styles.statNumber}>{approvalsCount ?? '—'}</span>
             <span className={styles.statLabel}>Pending approvals</span>
-          </Link>
+          </a>
         ) : null}
         {isHrOrAdmin ? (
-          <Link to="/employees" className={styles.statCard}>
+          <a href="/employees" className={styles.statCard}>
             <span className={styles.statNumber}>{employeeCount ?? '—'}</span>
             <span className={styles.statLabel}>Total employees</span>
-          </Link>
+          </a>
         ) : null}
-        <Link to="/leave/calendar" className={styles.statCard}>
+        <a href="/leave/calendar" className={styles.statCard}></a>
+        <div className={styles.statCard}>
+          <img src="/icons/calendar.png" className={styles.statIcon} />
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
-        </Link>
+        </div>
       </div>
 
       <section className={styles.section}>

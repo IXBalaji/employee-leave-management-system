@@ -324,9 +324,12 @@ export function EmployeeForm({
             </Select>
           </Field>
           {mode === 'create' && canEditAll ? (
-            <Field label="Temporary password" hint="At least 8 characters. The employee can change it later." error={errors.password?.message} required>
-              <Input type="password" {...register('password')} />
-            </Field>
+            <div>
+              <span style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>Temporary password *</span>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-ink-faint)' }}>At least 8 characters. The employee can change it later.</p>
+              <input type="password" {...register('password')} style={{ width: '100%', padding: '0.55rem 0.7rem', border: '1.5px solid var(--color-rule-strong)', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)' }} />
+              {errors.password?.message ? <p style={{ color: 'var(--color-rust)', fontSize: 'var(--text-sm)' }}>{errors.password.message}</p> : null}
+            </div>
           ) : null}
         </div>
       </TabPanel>
