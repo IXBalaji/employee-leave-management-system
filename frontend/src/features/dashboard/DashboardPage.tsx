@@ -62,7 +62,11 @@ export function DashboardPage() {
             <span className={styles.statLabel}>Total employees</span>
           </Link>
         ) : null}
-        <Link to="/leave/calendar" className={styles.statCard}>
+        <Link
+          to="/leave/calendar"
+          className={styles.statCard}
+          aria-label={`${upcomingHolidays.length} upcoming holidays`}
+        >
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
         </Link>
