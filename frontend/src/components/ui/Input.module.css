@@ -18,6 +18,13 @@
   border-color: var(--color-ink-muted);
 }
 
+.input:focus,
+.input:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-color: var(--color-focus-ring);
+}
+
 .input:disabled {
   background: var(--color-surface);
   color: var(--color-ink-faint);
