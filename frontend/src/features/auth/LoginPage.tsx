@@ -64,7 +64,7 @@ export function LoginPage() {
             <Input type="email" autoComplete="username" placeholder="name@company.com" {...register('workEmail')} />
           </Field>
 
-          <Field label="Password" error={errors.password?.message} required>
+          <Field label="Password" hint="At least 8 characters" error={errors.password?.message} required>
             <Input type="password" autoComplete="current-password" {...register('password')} />
           </Field>
 
