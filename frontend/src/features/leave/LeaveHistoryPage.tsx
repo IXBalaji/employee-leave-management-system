@@ -78,9 +78,9 @@ export function LeaveHistoryPage() {
   return (
     <div>
       <h1>My leave history</h1>
-      <h4 style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)', fontWeight: 400 }}>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)', fontWeight: 400 }}>
         Every request you've submitted, most recent first.
-      </h4>
+      </p>
       <DataTable
         caption="My leave requests"
         columns={columns}
