@@ -64,7 +64,7 @@ export function ApplyLeavePage() {
   return (
     <div>
       <h1>Apply for leave</h1>
-      <p style={{ color: '#c8c8c8', fontSize: 'var(--text-base)' }}>Select your leave type before choosing dates</p>
+      <p style={{ color: 'var(--color-ink-muted)', fontSize: 'var(--text-base)' }}>Select your leave type before choosing dates</p>
       <p className={styles.subtitle}>Your balance for this year:</p>
       <div className={styles.balances}>
         <LeaveBalanceSummary balances={balances} />
