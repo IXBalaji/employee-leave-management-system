@@ -47,15 +47,27 @@ export function LoginPage() {
   return (
     <main className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.stampCorner} aria-hidden="true">
-          ELMS
-        </div>
+        {/* Intentional a11y defect: informational image missing alt (axe: image-alt) */}
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
+        {/* Intentional a11y defect: icon-only control with no accessible name (axe: button-name) */}
+        <button type="button" className={styles.helpButton} onClick={() => undefined}>
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+            <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <path
+              d="M7.5 7.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8v.5M10 14.5h.01"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
           {formError ? (
-            <p className={styles.formError}>
+            <p className={styles.formError} role="alert">
               {formError}
             </p>
           ) : null}
