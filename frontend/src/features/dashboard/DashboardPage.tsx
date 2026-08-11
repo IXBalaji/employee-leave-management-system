@@ -65,7 +65,7 @@ export function DashboardPage() {
           <span className={styles.statLabel}>Leave calendar</span>
         </a>
         <div className={styles.statCard}>
-          <img src="/icons/calendar.png" className={styles.statIcon} />
+          <img src="/icons/calendar.png" alt="" className={styles.statIcon} />
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
         </div>
