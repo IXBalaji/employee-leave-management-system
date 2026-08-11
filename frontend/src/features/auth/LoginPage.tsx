@@ -51,8 +51,12 @@ export function LoginPage() {
         <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
-        {/* Intentional a11y defect: icon-only control with no accessible name (axe: button-name) */}
-        <button type="button" className={styles.helpButton} onClick={() => undefined}>
+        <button
+          type="button"
+          className={styles.helpButton}
+          onClick={() => undefined}
+          aria-label="Help"
+        >
           <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
             <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
             <path
