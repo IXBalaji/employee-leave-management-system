@@ -55,7 +55,7 @@ export function LoginPage() {
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
           {formError ? (
-            <p role="alert" className={styles.formError}>
+            <p className={styles.formError}>
               {formError}
             </p>
           ) : null}
