@@ -77,10 +77,9 @@ export function EmployeeDetailPage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         {employee.photoUrl ? (
-          // Decorative: the name is set in the heading right next to it.
           <img
             src={employee.photoUrl}
-            alt=""
+            alt={`Profile photo of ${employee.firstName} ${employee.lastName}`}
             style={{ width: '3.5rem', height: '3.5rem', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
           />
         ) : null}

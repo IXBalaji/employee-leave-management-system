@@ -35,9 +35,11 @@ export function AppShell() {
         <div className={styles.topbarSpacer} />
         <div className={styles.userMenu}>
           {user.photoUrl ? (
-            // Decorative: the person's name is always shown right next to this photo,
-            // so a screen reader doesn't need the image described again.
-            <img src={user.photoUrl} alt="" className={styles.avatarPhoto} />
+            <img
+              src={user.photoUrl}
+              alt={`Profile photo of ${user.firstName} ${user.lastName}`}
+              className={styles.avatarPhoto}
+            />
           ) : (
             <span className={styles.avatar} aria-hidden="true">
               {initials}
