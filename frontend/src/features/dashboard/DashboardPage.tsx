@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { leaveApi } from '../leave/api';
 import { referenceApi, type Holiday } from '../../lib/reference';
@@ -62,9 +61,11 @@ export function DashboardPage() {
             <span className={styles.statLabel}>Total employees</span>
           </a>
         ) : null}
-        <a href="/leave/calendar" className={styles.statCard}></a>
+        <a href="/leave/calendar" className={styles.statCard}>
+          <span className={styles.statLabel}>Leave calendar</span>
+        </a>
         <div className={styles.statCard}>
-          <img src="/icons/calendar.png" className={styles.statIcon} />
+          <img src="/icons/calendar.png" alt="" className={styles.statIcon} />
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
         </div>
