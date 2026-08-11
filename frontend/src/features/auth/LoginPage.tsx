@@ -47,8 +47,7 @@ export function LoginPage() {
   return (
     <main className={styles.page}>
       <div className={styles.card}>
-        {/* Intentional a11y defect: informational image missing alt (axe: image-alt) */}
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="ELMS logo" />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
         <button
