@@ -149,9 +149,13 @@ export function DepartmentsPage() {
 
       <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'flex-end', marginBottom: 'var(--space-5)', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '12rem' }}>
-          <Field label="New department name">
-            <Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. Marketing" />
-          </Field>
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Violation: 5/5
+            Rule: label
+            Test: src/scan/tests/admin.spec.ts / departments
+          */}
+          <Input value={newName} onChange={(e) => setNewName(e.target.value)} />
         </div>
         <div style={{ minWidth: '12rem' }}>
           <Field label="Department head (optional)">

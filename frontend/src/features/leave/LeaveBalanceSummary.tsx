@@ -22,13 +22,18 @@ export function LeaveBalanceSummary({ balances }: LeaveBalanceSummaryProps) {
               <span className={styles.remainingNumber}>{remaining}</span>
               <span className={styles.remainingLabel}>days left</span>
             </p>
+            {/*
+              INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+              Violation: 3/5
+              Rule: aria-progressbar-name
+              Test: src/scan/tests/employee.spec.ts / apply for leave — default state
+            */}
             <div
               className={styles.track}
               role="progressbar"
               aria-valuenow={b.used}
               aria-valuemin={0}
               aria-valuemax={b.allocated}
-              aria-label={`${b.leaveType.name}: ${b.used} of ${b.allocated} days used`}
             >
               <div className={styles.fill} style={{ width: `${pct}%` }} />
             </div>

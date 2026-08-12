@@ -47,14 +47,25 @@ export function LoginPage() {
   return (
     <main className={styles.page}>
       <div className={styles.card}>
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="ELMS logo" />
+        {/*
+          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+          Violation: 1/5
+          Rule: image-alt
+          Test: src/scan/tests/login.spec.ts / full accessibility scan of the sign-in form
+        */}
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
+        {/*
+          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+          Violation: 2/5
+          Rule: button-name
+          Test: src/scan/tests/login.spec.ts / full accessibility scan of the sign-in form
+        */}
         <button
           type="button"
           className={styles.helpButton}
           onClick={() => undefined}
-          aria-label="Help"
         >
           <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
             <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
