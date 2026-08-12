@@ -33,7 +33,7 @@ export function HolidayCalendarPage() {
         Rule: color-contrast
         Test: src/scan/tests/employee.spec.ts / holiday calendar
       */}
-      <p style={{ color: '#d0d5cb', marginBottom: 'var(--space-5)' }}>Company holidays for this year.</p>
+      <p style={{ color: '#4b5245', marginBottom: 'var(--space-5)' }}>Company holidays for this year.</p>
       <DataTable
         caption="Company holidays"
         columns={columns}
