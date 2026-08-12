@@ -65,12 +65,7 @@ export function ApplyLeavePage() {
     <div>
       <h1>Apply for leave</h1>
       <p style={{ color: 'var(--color-ink-muted)', fontSize: 'var(--text-base)' }}>Select your leave type before choosing dates</p>
-      {/*
-        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-        Violation: 3/5
-        Rule: color-contrast
-      */}
-      <p style={{ color: '#d8dbd5', fontSize: 'var(--text-sm)' }}>Half-day requests are approved faster.</p>
+      <p style={{ color: 'var(--color-ink-muted)', fontSize: 'var(--text-sm)' }}>Half-day requests are approved faster.</p>
       <p className={styles.subtitle}>Your balance for this year:</p>
       <div className={styles.balances}>
         <LeaveBalanceSummary balances={balances} />
