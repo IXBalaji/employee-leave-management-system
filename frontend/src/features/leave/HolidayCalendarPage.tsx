@@ -27,13 +27,7 @@ export function HolidayCalendarPage() {
   return (
     <div>
       <h1>Holiday calendar</h1>
-      {/*
-        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-        Violation: 4/5
-        Rule: color-contrast
-        Test: src/scan/tests/employee.spec.ts / holiday calendar
-      */}
-      <p style={{ color: '#d0d5cb', marginBottom: 'var(--space-5)' }}>Company holidays for this year.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Company holidays for this year.</p>
       <DataTable
         caption="Company holidays"
         columns={columns}
