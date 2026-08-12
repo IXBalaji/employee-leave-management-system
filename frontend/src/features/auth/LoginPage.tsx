@@ -53,7 +53,7 @@ export function LoginPage() {
           Rule: image-alt
           Test: src/scan/tests/login.spec.ts / full accessibility scan of the sign-in form
         */}
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="" />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
         {/*
