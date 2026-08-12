@@ -149,13 +149,12 @@ export function DepartmentsPage() {
 
       <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'flex-end', marginBottom: 'var(--space-5)', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '12rem' }}>
-          {/*
-            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-            Violation: 5/5
-            Rule: label
-            Test: src/scan/tests/admin.spec.ts / departments
-          */}
-          <Input value={newName} onChange={(e) => setNewName(e.target.value)} />
+          <Input
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            aria-label="Department name"
+            placeholder="Department name"
+          />
         </div>
         <div style={{ minWidth: '12rem' }}>
           <Field label="Department head (optional)">
