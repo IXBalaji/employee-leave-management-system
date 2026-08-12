@@ -58,7 +58,23 @@ export function LeaveHistoryPage() {
       render: (r) => (r.startDate === r.endDate || r.isHalfDay ? formatDate(r.startDate) : `${formatDate(r.startDate)} – ${formatDate(r.endDate)}`),
     },
     { key: 'reason', header: 'Reason', render: (r) => r.reason },
-    { key: 'status', header: 'Status', render: (r) => <StatusStamp tone={STATUS_TONE[r.status]} label={STATUS_LABEL[r.status]} /> },
+    {
+      key: 'status',
+      header: 'Status',
+      render: (r) => (
+        <>
+          <StatusStamp tone={STATUS_TONE[r.status]} label={STATUS_LABEL[r.status]} />
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Violation: 4/5
+            Rule: link-name
+          */}
+          <a href={`/leave/history/${r.id}`}>
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="currentColor"/></svg>
+          </a>
+        </>
+      ),
+    },
     {
       key: 'actions',
       header: 'Actions',

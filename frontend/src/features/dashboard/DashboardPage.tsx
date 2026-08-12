@@ -47,6 +47,11 @@ export function DashboardPage() {
     <div>
       <h1>Welcome back, {user?.firstName}</h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
+      {/*
+        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+        Violation: 2/5
+        Rule: label
+      */}
       <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>

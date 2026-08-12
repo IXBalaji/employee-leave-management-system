@@ -67,6 +67,11 @@ export function ApprovalsPage() {
           <Button variant="danger" size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'REJECTED')}>
             Reject
           </Button>
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Violation: 5/5
+            Rule: button-name
+          */}
           <button onClick={() => {}}>
             <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12z" fill="currentColor"/></svg>
           </button>

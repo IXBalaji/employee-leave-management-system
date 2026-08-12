@@ -51,17 +51,10 @@ export function LoginPage() {
           INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
           Violation: 1/5
           Rule: image-alt
-          Test: src/scan/tests/login.spec.ts / full accessibility scan of the sign-in form
         */}
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="" />
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
-        {/*
-          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-          Violation: 2/5
-          Rule: button-name
-          Test: src/scan/tests/login.spec.ts / full accessibility scan of the sign-in form
-        */}
         <button
           type="button"
           className={styles.helpButton}
