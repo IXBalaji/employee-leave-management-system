@@ -66,6 +66,7 @@ export function LoginPage() {
           type="button"
           className={styles.helpButton}
           onClick={() => undefined}
+          aria-label="Help"
         >
           <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
             <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
