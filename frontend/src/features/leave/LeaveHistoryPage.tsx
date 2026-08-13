@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { leaveApi } from './api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveRequest, LeaveRequestStatus } from './types';
 
 const STATUS_TONE: Record<LeaveRequestStatus, StampTone> = {
@@ -26,6 +27,7 @@ function formatDate(value: string) {
 }
 
 export function LeaveHistoryPage() {
+  useDocumentTitle('Leave History');
   const { notify } = useToast();
   const [requests, setRequests] = useState<LeaveRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);
