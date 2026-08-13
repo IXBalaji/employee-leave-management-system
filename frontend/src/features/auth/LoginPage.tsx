@@ -52,7 +52,7 @@ export function LoginPage() {
           Violation: 1/5
           Rule: image-alt
         */}
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="Company logo" />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
         <button
