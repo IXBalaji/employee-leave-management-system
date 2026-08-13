@@ -23,7 +23,7 @@ function AccessibilityBugDemo() {
     <div style={{ padding: '2rem', display: 'grid', gap: '1rem' }}>
       <h1>Accessibility regression demo</h1>
       <img src="placeholder-image.png" alt="Placeholder demonstration image" />
-      <button type="button"></button>
+      <button type="button" aria-label="Demo button">Demo button</button>
       <a href="#" aria-label="Demo link">Demo link</a>
       <label htmlFor="unlabeled-input">Demo Input</label>
       <input id="unlabeled-input" type="text" />
