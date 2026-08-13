@@ -26,6 +26,9 @@ function AccessibilityBugDemo() {
       <button type="button"></button>
       <a href="#"></a>
       <input id="unlabeled-input" type="text" />
+      <p className="low-contrast" style={{ color: '#9b9b9b' }}>
+        This text has insufficient contrast.
+      </p>
     </div>
   );
 }
