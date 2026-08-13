@@ -76,8 +76,6 @@ export function EmployeeListPage() {
         <div>
           <h1>Employees</h1>
           <img src="/icons/team-banner.png" width={320} height={60} alt="Team banner" />
-          {/* a11y-violation 5/5: empty-heading — heading with no text content (WCAG 2.4.6 Headings and Labels) */}
-          <h2 className={styles.subtitle}></h2>
           <p className={styles.subtitle}>{employees.length} record{employees.length === 1 ? '' : 's'}</p>
         </div>
         <Link to="/employees/new" className={styles.newLink}>
