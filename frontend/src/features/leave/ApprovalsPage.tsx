@@ -80,12 +80,7 @@ export function ApprovalsPage() {
   return (
     <div>
       <h1>Approvals</h1>
-      {/*
-        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-        Rule: image-alt — img element has no alt attribute
-        WCAG: 1.1.1 Non-text Content (Level A)
-      */}
-      <img src="/icons/approvals-banner.png" width={280} height={48} />
+      <img src="/icons/approvals-banner.png" width={280} height={48} alt="Approvals banner" />
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
       <DataTable
         caption="Pending leave requests"
