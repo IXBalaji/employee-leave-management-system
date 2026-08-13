@@ -6,6 +6,7 @@ import { StatusStamp, type StampTone } from '../../components/ui/StatusStamp';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { employeesApi } from './api';
 import { referenceApi } from '../../lib/reference';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee, EmployeeStatus } from './types';
 import { STATUS_OPTIONS } from './schema';
 import styles from './EmployeeListPage.module.css';
@@ -23,6 +24,7 @@ const STATUS_LABEL: Record<EmployeeStatus, string> = {
 };
 
 export function EmployeeListPage() {
+  useDocumentTitle('Employees');
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [departments, setDepartments] = useState<Department[]>([]);
   const [q, setQ] = useState('');

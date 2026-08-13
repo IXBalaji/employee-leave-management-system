@@ -8,6 +8,7 @@ import { Field } from '../../components/ui/Field';
 import { Input } from '../../components/ui/Input';
 import { useAuth } from './AuthContext';
 import { ApiError } from '../../lib/api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import styles from './LoginPage.module.css';
 
 const loginSchema = z.object({
@@ -18,6 +19,7 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
+  useDocumentTitle('Sign In');
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();

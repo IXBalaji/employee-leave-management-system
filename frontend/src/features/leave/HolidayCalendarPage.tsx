@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { referenceApi, type Holiday } from '../../lib/reference';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 
 function formatDate(value: string) {
   return new Date(value).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 export function HolidayCalendarPage() {
+  useDocumentTitle('Holiday Calendar');
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

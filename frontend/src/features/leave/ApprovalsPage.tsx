@@ -5,6 +5,7 @@ import { Input } from '../../components/ui/Input';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { leaveApi } from './api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveRequest } from './types';
 
 function formatDate(value: string) {
@@ -12,6 +13,7 @@ function formatDate(value: string) {
 }
 
 export function ApprovalsPage() {
+  useDocumentTitle('Leave Approvals');
   const { notify } = useToast();
   const [requests, setRequests] = useState<LeaveRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -5,10 +5,12 @@ import { employeesApi } from './api';
 import { referenceApi } from '../../lib/reference';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee, LeavePolicySummary } from './types';
 import type { EmployeeFormValues } from './schema';
 
 export function EmployeeCreatePage() {
+  useDocumentTitle('Add Employee');
   const navigate = useNavigate();
   const { notify } = useToast();
   const [departments, setDepartments] = useState<Department[]>([]);
