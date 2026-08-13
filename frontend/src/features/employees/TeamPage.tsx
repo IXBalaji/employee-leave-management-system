@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { StatusStamp, type StampTone } from '../../components/ui/StatusStamp';
 import { employeesApi } from './api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Employee, EmployeeStatus } from './types';
 
 const STATUS_TONE: Record<EmployeeStatus, StampTone> = {
@@ -18,6 +19,7 @@ const STATUS_LABEL: Record<EmployeeStatus, string> = {
 };
 
 export function TeamPage() {
+  useDocumentTitle('My Team');
   const [team, setTeam] = useState<Employee[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 

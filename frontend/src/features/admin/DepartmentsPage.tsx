@@ -9,9 +9,11 @@ import { ApiError } from '../../lib/api';
 import { referenceApi } from '../../lib/reference';
 import { employeesApi } from '../employees/api';
 import { adminApi } from './adminApi';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee } from '../employees/types';
 
 export function DepartmentsPage() {
+  useDocumentTitle('Departments');
   const { notify } = useToast();
   const [departments, setDepartments] = useState<Department[]>([]);
   const [employees, setEmployees] = useState<Employee[]>([]);

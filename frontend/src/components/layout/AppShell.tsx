@@ -13,12 +13,12 @@ export function AppShell() {
   const initials = `${user.firstName[0]}${user.lastName[0]}`;
 
   return (
-    <div className={styles.shell}>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-
-      <header className={styles.topbar}>
+    <>
+      <div className={styles.shell}>
+        <header className={styles.topbar}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <button
           type="button"
           className={styles.navToggle}
@@ -82,9 +82,10 @@ export function AppShell() {
         ))}
       </nav>
 
-      <main id="main-content" className={styles.main} tabIndex={-1}>
-        <Outlet />
-      </main>
-    </div>
+        <main id="main-content" className={styles.main} tabIndex={-1}>
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 }

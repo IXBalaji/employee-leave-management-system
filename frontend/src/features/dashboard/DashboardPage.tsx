@@ -5,6 +5,7 @@ import { referenceApi, type Holiday } from '../../lib/reference';
 import { employeesApi } from '../employees/api';
 import { LeaveBalanceSummary } from '../leave/LeaveBalanceSummary';
 import type { LeaveBalance } from '../leave/types';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import styles from './DashboardPage.module.css';
 
 function formatDate(value: string) {
@@ -19,6 +20,7 @@ function daysUntil(value: string) {
 }
 
 export function DashboardPage() {
+  useDocumentTitle('Dashboard');
   const { user } = useAuth();
   const [balances, setBalances] = useState<LeaveBalance[]>([]);
   const [holidays, setHolidays] = useState<Holiday[]>([]);

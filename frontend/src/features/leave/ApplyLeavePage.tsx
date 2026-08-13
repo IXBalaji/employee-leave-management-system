@@ -13,10 +13,12 @@ import { referenceApi, type LeaveType } from '../../lib/reference';
 import { leaveApi } from './api';
 import { leaveApplySchema, type LeaveApplyValues } from './schema';
 import { LeaveBalanceSummary } from './LeaveBalanceSummary';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveBalance } from './types';
 import styles from './ApplyLeavePage.module.css';
 
 export function ApplyLeavePage() {
+  useDocumentTitle('Apply for Leave');
   const { notify } = useToast();
   const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);
   const [balances, setBalances] = useState<LeaveBalance[]>([]);

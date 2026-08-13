@@ -7,6 +7,7 @@ import { referenceApi } from '../../lib/reference';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { useAuth } from '../auth/AuthContext';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee, LeavePolicySummary } from './types';
 import type { EmployeeFormValues } from './schema';
 
@@ -26,6 +27,8 @@ export function EmployeeDetailPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string[]> | undefined>();
 
   const isHrOrAdmin = user?.role === 'HR' || user?.role === 'ADMIN';
+
+  useDocumentTitle(employee ? `${employee.firstName} ${employee.lastName}` : 'Employee Profile');
 
   useEffect(() => {
     if (!id) return;

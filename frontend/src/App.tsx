@@ -18,26 +18,10 @@ import { DepartmentsPage } from './features/admin/DepartmentsPage';
 import { LeavePoliciesPage } from './features/admin/LeavePoliciesPage';
 import { HolidaysPage } from './features/admin/HolidaysPage';
 
-function AccessibilityBugDemo() {
-  return (
-    <div style={{ padding: '2rem', display: 'grid', gap: '1rem' }}>
-      <h1>Accessibility regression demo</h1>
-      <img src="placeholder-image.png" />
-      <button type="button"></button>
-      <a href="#"></a>
-      <input id="unlabeled-input" type="text" />
-      <p className="low-contrast" style={{ color: '#9b9b9b' }}>
-        This text has insufficient contrast.
-      </p>
-    </div>
-  );
-}
-
 function App() {
   return (
     <ToastProvider>
       <AuthProvider>
-        <AccessibilityBugDemo />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
