@@ -14,11 +14,11 @@ export function AppShell() {
 
   return (
     <>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
       <div className={styles.shell}>
         <header className={styles.topbar}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <button
           type="button"
           className={styles.navToggle}

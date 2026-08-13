@@ -18,24 +18,10 @@ import { DepartmentsPage } from './features/admin/DepartmentsPage';
 import { LeavePoliciesPage } from './features/admin/LeavePoliciesPage';
 import { HolidaysPage } from './features/admin/HolidaysPage';
 
-function AccessibilityBugDemo() {
-  return (
-    <main style={{ padding: '2rem', display: 'grid', gap: '1rem' }}>
-      <h1>Accessibility regression demo</h1>
-      <img src="placeholder-image.png" alt="Placeholder demonstration image" />
-      <button type="button" aria-label="Demo button">Demo button</button>
-      <a href="#" aria-label="Demo link">Demo link</a>
-      <label htmlFor="unlabeled-input">Demo Input</label>
-      <input id="unlabeled-input" type="text" />
-    </main>
-  );
-}
-
 function App() {
   return (
     <ToastProvider>
       <AuthProvider>
-        <AccessibilityBugDemo />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
