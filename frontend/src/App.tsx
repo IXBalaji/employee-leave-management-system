@@ -25,6 +25,7 @@ function AccessibilityBugDemo() {
       <img src="placeholder-image.png" />
       <button type="button"></button>
       <a href="#" aria-label="Demo link">Demo link</a>
+      <label htmlFor="unlabeled-input">Demo Input</label>
       <input id="unlabeled-input" type="text" />
     </div>
   );
