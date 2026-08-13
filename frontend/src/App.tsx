@@ -24,7 +24,7 @@ function AccessibilityBugDemo() {
       <h1>Accessibility regression demo</h1>
       <img src="placeholder-image.png" />
       <button type="button"></button>
-      <a href="#"></a>
+      <a href="#" aria-label="Demo link">Demo link</a>
       <input id="unlabeled-input" type="text" />
     </div>
   );
