@@ -339,9 +339,8 @@ export function EmployeeForm({
           <Button type="submit" disabled={submitting}>
             {submitting ? 'Saving…' : 'Save changes'}
           </Button>
-          {/* a11y-violation 6/5: link-name — link with no discernible text (WCAG 2.4.4 Link Purpose) */}
-          <a href="/employees" className={styles.actions}>
-            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/></svg>
+          <a href="/employees" className={styles.backButton} aria-label="Back to employees list">
+            <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" fill="currentColor"/></svg>
           </a>
         </div>
       ) : null}
