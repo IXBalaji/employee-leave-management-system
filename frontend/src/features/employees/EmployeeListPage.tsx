@@ -81,6 +81,13 @@ export function EmployeeListPage() {
         <Link to="/employees/new" className={styles.newLink}>
           Add employee
         </Link>
+        {/*
+          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+          Rule: link-name — anchor has no accessible name (icon-only, no aria-label)
+        */}
+        <a href="/employees/export" className={styles.newLink}>
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+        </a>
       </div>
 
       <div className={styles.filters}>
