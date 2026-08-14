@@ -22,12 +22,6 @@ function App() {
   return (
     <ToastProvider>
       <AuthProvider>
-        <div>
-          <p style={{ color: '#9b9b9b' }}>Status message</p>
-          <h2></h2>
-          <input type="email" autoComplete="email" aria-label="Email input" />
-          <button style={{ width: '18px', height: '18px' }}>×</button>
-        </div>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
