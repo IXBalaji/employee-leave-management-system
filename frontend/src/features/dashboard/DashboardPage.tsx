@@ -46,7 +46,7 @@ export function DashboardPage() {
     .slice(0, 5);
 
   return (
-    <div>
+    <>
       <h1>Welcome back, {user?.firstName}</h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
       {/*
@@ -101,6 +101,6 @@ export function DashboardPage() {
           </ul>
         )}
       </section>
-    </div>
+    </>
   );
 }

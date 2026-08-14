@@ -143,7 +143,7 @@ export function DepartmentsPage() {
   ];
 
   return (
-    <div>
+    <>
       <h1>Departments</h1>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
         Manage the departments employees can be assigned to.
@@ -182,6 +182,6 @@ export function DepartmentsPage() {
         getRowKey={(d) => d.id}
         emptyMessage={isLoading ? 'Loading…' : 'No departments yet.'}
       />
-    </div>
+    </>
   );
 }
