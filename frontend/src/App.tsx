@@ -22,6 +22,7 @@ function App() {
   return (
     <ToastProvider>
       <AuthProvider>
+        <img src="/test-image.png" width={100} height={100} />
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
