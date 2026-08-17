@@ -160,7 +160,7 @@ export function DepartmentsPage() {
         {/*
           WCAG 2.4.4 - Link without accessible name
         */}
-        <a href="/admin/departments/export" style={{ padding: '0.5rem', border: '1px solid var(--color-border)', borderRadius: '4px' }}>
+        <a href="/admin/departments/export" aria-label="Export departments" style={{ padding: '0.5rem', border: '1px solid var(--color-border)', borderRadius: '4px' }}>
           <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
         </a>
         <div style={{ minWidth: '12rem' }}>
