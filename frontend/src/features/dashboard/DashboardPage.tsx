@@ -49,10 +49,7 @@ export function DashboardPage() {
     <>
       <h1>Welcome back, {user?.firstName}</h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
-      <img src="/dashboard-banner.png" width={300} height={100} />
-      {/*
-        WCAG 1.1.1 - Image without alt text
-      */}
+      <img src="/dashboard-banner.png" width={300} height={100} alt="Dashboard welcome banner" />
       <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>
