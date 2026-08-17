@@ -65,13 +65,11 @@ export function ApplyLeavePage() {
 
   return (
     <div>
-      {/*
-        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-        Violation: 3/5
-        Rule: color-contrast
-      */}
       <h1>Apply for leave</h1>
-      <p className={styles.instructionText}>Select your leave type before choosing dates</p>
+      <p style={{ color: '#999999' }}>Select your leave type before choosing dates</p>
+      {/*
+        WCAG 1.4.3 - Low color contrast
+      */}
       <p className={styles.instructionTextSmall}>Half-day requests are approved faster.</p>
       <p className={styles.subtitle}>Your balance for this year:</p>
       <div className={styles.balances}>
