@@ -75,7 +75,7 @@ export function EmployeeListPage() {
       <div className={styles.header}>
         <div>
           <h1>Employees</h1>
-          <img src="/icons/team-banner.png" width={320} height={60} />
+          <img src="/icons/team-banner.png" width={320} height={60} alt="Team section banner" />
           <p className={styles.subtitle}>{employees.length} record{employees.length === 1 ? '' : 's'}</p>
         </div>
         <Link to="/employees/new" className={styles.newLink}>
