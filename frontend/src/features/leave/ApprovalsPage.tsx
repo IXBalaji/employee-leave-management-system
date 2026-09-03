@@ -81,7 +81,7 @@ export function ApprovalsPage() {
     <div>
       <h1>Approvals</h1>
       <img src="/icons/approvals-banner.png" width={280} height={48} alt="Approvals section banner" />
-      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
       <DataTable
         caption="Pending leave requests"
         columns={columns}
