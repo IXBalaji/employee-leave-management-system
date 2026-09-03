@@ -49,7 +49,7 @@ export function DashboardPage() {
     <>
       <h1>Welcome back, {user?.firstName}</h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
-      <img src="/dashboard-banner.png" width={300} height={100} />
+      <img src="/dashboard-banner.png" width={300} height={100} alt="Dashboard banner" />
       <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>
@@ -69,7 +69,7 @@ export function DashboardPage() {
           <span className={styles.statLabel}>Leave calendar</span>
         </a>
         <div className={styles.statCard}>
-          <img src="/icons/calendar.png" className={styles.statIcon} />
+          <img src="/icons/calendar.png" className={styles.statIcon} alt="Calendar icon" />
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
         </div>
