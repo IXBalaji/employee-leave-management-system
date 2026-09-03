@@ -81,7 +81,7 @@ export function EmployeeListPage() {
         <Link to="/employees/new" className={styles.newLink}>
           Add employee
         </Link>
-        <a href="/employees/export" className={styles.newLink}>
+        <a href="/employees/export" className={styles.newLink} aria-label="Export employees">
           <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
         </a>
       </div>
