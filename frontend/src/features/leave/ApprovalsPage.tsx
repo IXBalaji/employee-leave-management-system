@@ -69,7 +69,7 @@ export function ApprovalsPage() {
           <Button variant="danger" size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'REJECTED')}>
             Reject
           </Button>
-          <button onClick={() => {}} aria-label={`Delete leave request for ${r.employee.firstName} ${r.employee.lastName}`}>
+          <button onClick={() => {}}>
             <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12z" fill="currentColor"/></svg>
           </button>
         </div>
@@ -80,8 +80,8 @@ export function ApprovalsPage() {
   return (
     <div>
       <h1>Approvals</h1>
-      <img src="/icons/approvals-banner.png" width={280} height={48} alt="Approvals banner" />
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
+      <img src="/icons/approvals-banner.png" width={280} height={48} />
+      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
       <DataTable
         caption="Pending leave requests"
         columns={columns}
