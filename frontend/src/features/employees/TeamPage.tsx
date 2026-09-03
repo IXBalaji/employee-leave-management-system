@@ -50,7 +50,7 @@ export function TeamPage() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
         <h1>My team</h1>
         <img src="/icons/team-icon.png" width={24} height={24} alt="Team icon" />
-        <button onClick={() => window.print()} style={{ width: '24px', height: '24px', padding: 0, border: 'none', background: 'none' }}>
+        <button onClick={() => window.print()} aria-label="Print team page" style={{ width: '24px', height: '24px', padding: 0, border: 'none', background: 'none' }}>
           <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z" fill="currentColor"/></svg>
         </button>
       </div>
