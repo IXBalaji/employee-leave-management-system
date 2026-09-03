@@ -116,7 +116,7 @@ export function ApplyLeavePage() {
           error={errors.reason?.message}
           required
           labelExtra={
-            <button className={styles.helpButton}>
+            <button className={styles.helpButton} aria-label="Help with reason field">
               <svg viewBox="0 0 16 16" width="14" height="14">
                 <path
                   fill="currentColor"
