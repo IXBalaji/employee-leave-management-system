@@ -37,4 +37,23 @@
 .actions {
   display: flex;
   justify-content: flex-end;
+  gap: var(--space-3);
+}
+
+.helpButton {
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--color-ink-muted);
+  cursor: pointer;
+}
+
+.clearButton {
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-raised);
+  cursor: pointer;
 }

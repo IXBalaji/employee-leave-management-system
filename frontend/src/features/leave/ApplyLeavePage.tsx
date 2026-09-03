@@ -110,11 +110,29 @@ export function ApplyLeavePage() {
           </Field>
         ) : null}
 
-        <Field label="Reason" hint="Give your manager enough context to approve quickly" error={errors.reason?.message} required>
+        <Field
+          label="Reason"
+          hint="Give your manager enough context to approve quickly"
+          error={errors.reason?.message}
+          required
+          labelExtra={
+            <button className={styles.helpButton}>
+              <svg viewBox="0 0 16 16" width="14" height="14">
+                <path
+                  fill="currentColor"
+                  d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 10.5h-1.5v-1.5h1.5Zm0-2.75h-1.5V4.5h1.5Z"
+                />
+              </svg>
+            </button>
+          }
+        >
           <Textarea {...register('reason')} />
         </Field>
 
         <div className={styles.actions}>
+          <button className={styles.clearButton} onClick={() => reset()}>
+            Clear form
+          </button>
           <Button type="submit" disabled={submitting}>
             {submitting ? 'Submitting…' : 'Submit request'}
           </Button>

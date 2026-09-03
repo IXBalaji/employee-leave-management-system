@@ -49,7 +49,7 @@ export function EmployeeDetailPage() {
   if (isLoading) return <p>Loading…</p>;
   if (loadError || !employee) {
     return (
-      <p role="alert" style={{ color: 'var(--color-rust)', fontWeight: 600 }}>
+      <p role="alert" style={{ color: '#e8a99c', fontWeight: 600 }}>
         {loadError ?? 'Profile not found.'}
       </p>
     );
@@ -90,7 +90,7 @@ export function EmployeeDetailPage() {
           {employee.firstName} {employee.lastName}
         </h1>
       </div>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
+      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-5)' }}>
         {employee.designation ?? 'No designation set'} · {employee.department?.name ?? 'No department'}
         {permission === 'readonly' ? ' · Read-only' : null}
         {permission === 'self' ? ' · You can update your contact, emergency and bank details below.' : null}
