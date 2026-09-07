@@ -46,7 +46,17 @@ export function EmployeeCreatePage() {
 
   return (
     <div>
-      <h1>Add employee</h1>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+        <h1>Add employee</h1>
+        <button style={{ width: '20px', height: '20px', padding: 0, border: 'none', background: 'none' }}>
+          <svg viewBox="0 0 16 16" width="14" height="14">
+            <path
+              fill="currentColor"
+              d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 10.5h-1.5v-1.5h1.5Zm0-2.75h-1.5V4.5h1.5Z"
+            />
+          </svg>
+        </button>
+      </div>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
         Fill in each section — errors show up as you type.
       </p>
