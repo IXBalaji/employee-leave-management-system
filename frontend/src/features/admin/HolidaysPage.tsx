@@ -76,7 +76,7 @@ export function HolidaysPage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
         <h1>Holidays</h1>
-        <img src="/icons/holiday-icon.png" width={24} height={24} />
+        <img src="/icons/holiday-icon.png" width={24} height={24} alt="" role="presentation" />
       </div>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
         Company-wide holidays shown on everyone's calendar.
