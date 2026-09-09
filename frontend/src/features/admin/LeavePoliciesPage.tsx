@@ -5,10 +5,12 @@ import { ApiError } from '../../lib/api';
 import { referenceApi, type LeavePolicy, type LeaveType } from '../../lib/reference';
 import { adminApi } from './adminApi';
 import { LeavePolicyForm } from './LeavePolicyForm';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeavePolicyFormValues } from './leavePolicySchema';
 import styles from './LeavePoliciesPage.module.css';
 
 export function LeavePoliciesPage() {
+  useDocumentTitle('Leave Policies');
   const { notify } = useToast();
   const [policies, setPolicies] = useState<LeavePolicy[]>([]);
   const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);

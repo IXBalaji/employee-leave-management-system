@@ -7,6 +7,7 @@ import { referenceApi } from '../../lib/reference';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { useAuth } from '../auth/AuthContext';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee, LeavePolicySummary } from './types';
 import type { EmployeeFormValues } from './schema';
 
@@ -27,6 +28,8 @@ export function EmployeeDetailPage() {
 
   const isHrOrAdmin = user?.role === 'HR' || user?.role === 'ADMIN';
 
+  useDocumentTitle(employee ? `${employee.firstName} ${employee.lastName}` : 'Employee Profile');
+
   useEffect(() => {
     if (!id) return;
     setIsLoading(true);
@@ -46,7 +49,7 @@ export function EmployeeDetailPage() {
   if (isLoading) return <p>Loading…</p>;
   if (loadError || !employee) {
     return (
-      <p role="alert" style={{ color: 'var(--color-rust)', fontWeight: 600 }}>
+      <p role="alert" style={{ color: '#e8a99c', fontWeight: 600 }}>
         {loadError ?? 'Profile not found.'}
       </p>
     );
@@ -77,10 +80,9 @@ export function EmployeeDetailPage() {
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-4)' }}>
         {employee.photoUrl ? (
-          // Decorative: the name is set in the heading right next to it.
           <img
             src={employee.photoUrl}
-            alt=""
+            alt={`${employee.firstName} ${employee.lastName}`}
             style={{ width: '3.5rem', height: '3.5rem', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
           />
         ) : null}

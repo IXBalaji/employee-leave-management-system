@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../auth/AuthContext';
 import { leaveApi } from '../leave/api';
 import { referenceApi, type Holiday } from '../../lib/reference';
 import { employeesApi } from '../employees/api';
 import { LeaveBalanceSummary } from '../leave/LeaveBalanceSummary';
 import type { LeaveBalance } from '../leave/types';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import styles from './DashboardPage.module.css';
 
 function formatDate(value: string) {
@@ -20,6 +20,7 @@ function daysUntil(value: string) {
 }
 
 export function DashboardPage() {
+  useDocumentTitle('Dashboard');
   const { user } = useAuth();
   const [balances, setBalances] = useState<LeaveBalance[]>([]);
   const [holidays, setHolidays] = useState<Holiday[]>([]);
@@ -45,27 +46,33 @@ export function DashboardPage() {
     .slice(0, 5);
 
   return (
-    <div>
+    <>
       <h1>Welcome back, {user?.firstName}</h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
+      <img src="/dashboard-banner.png" width={300} height={100} alt="Dashboard welcome banner" />
+      <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>
         {isManagerish ? (
-          <Link to="/leave/approvals" className={styles.statCard}>
+          <a href="/leave/approvals" className={styles.statCard}>
             <span className={styles.statNumber}>{approvalsCount ?? '—'}</span>
             <span className={styles.statLabel}>Pending approvals</span>
-          </Link>
+          </a>
         ) : null}
         {isHrOrAdmin ? (
-          <Link to="/employees" className={styles.statCard}>
+          <a href="/employees" className={styles.statCard}>
             <span className={styles.statNumber}>{employeeCount ?? '—'}</span>
             <span className={styles.statLabel}>Total employees</span>
-          </Link>
+          </a>
         ) : null}
-        <Link to="/leave/calendar" className={styles.statCard}>
+        <a href="/leave/calendar" className={styles.statCard}>
+          <span className={styles.statLabel}>Leave calendar</span>
+        </a>
+        <div className={styles.statCard}>
+          <img src="/icons/calendar.png" className={styles.statIcon} alt="Calendar icon" />
           <span className={styles.statNumber}>{upcomingHolidays.length}</span>
           <span className={styles.statLabel}>Upcoming holidays</span>
-        </Link>
+        </div>
       </div>
 
       <section className={styles.section}>
@@ -90,6 +97,6 @@ export function DashboardPage() {
           </ul>
         )}
       </section>
-    </div>
+    </>
   );
 }

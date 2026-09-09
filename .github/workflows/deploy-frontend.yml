@@ -2,13 +2,13 @@ name: Deploy Frontend to Azure Static Web Apps
 
 on:
   push:
-    branches: [master]
+    branches: [qa]
     paths:
       - 'frontend/**'
       - '.github/workflows/deploy-frontend.yml'
   pull_request:
     types: [opened, synchronize, reopened, closed]
-    branches: [master]
+    branches: [qa]
     paths:
       - 'frontend/**'
   workflow_dispatch:

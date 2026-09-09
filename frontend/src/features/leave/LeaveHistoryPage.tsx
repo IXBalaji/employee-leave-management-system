@@ -5,6 +5,7 @@ import { Button } from '../../components/ui/Button';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { leaveApi } from './api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveRequest, LeaveRequestStatus } from './types';
 
 const STATUS_TONE: Record<LeaveRequestStatus, StampTone> = {
@@ -26,6 +27,7 @@ function formatDate(value: string) {
 }
 
 export function LeaveHistoryPage() {
+  useDocumentTitle('Leave History');
   const { notify } = useToast();
   const [requests, setRequests] = useState<LeaveRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -58,7 +60,18 @@ export function LeaveHistoryPage() {
       render: (r) => (r.startDate === r.endDate || r.isHalfDay ? formatDate(r.startDate) : `${formatDate(r.startDate)} – ${formatDate(r.endDate)}`),
     },
     { key: 'reason', header: 'Reason', render: (r) => r.reason },
-    { key: 'status', header: 'Status', render: (r) => <StatusStamp tone={STATUS_TONE[r.status]} label={STATUS_LABEL[r.status]} /> },
+    {
+      key: 'status',
+      header: 'Status',
+      render: (r) => (
+        <>
+          <StatusStamp tone={STATUS_TONE[r.status]} label={STATUS_LABEL[r.status]} />
+          <a href={`/leave/history/${r.id}`} aria-label={`View details for leave request from ${formatDate(r.startDate)}`}>
+            <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 5c-7 0-10 7-10 7s3 7 10 7 10-7 10-7-3-7-10-7zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8z" fill="currentColor"/></svg>
+          </a>
+        </>
+      ),
+    },
     {
       key: 'actions',
       header: 'Actions',
@@ -78,7 +91,21 @@ export function LeaveHistoryPage() {
   return (
     <div>
       <h1>My leave history</h1>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
+      <button onClick={() => load()} style={{ marginLeft: '1rem', padding: '0.25rem 0.5rem' }} aria-label="Refresh leave history">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/></svg>
+      </button>
+      {/*
+        WCAG 4.1.2 - Button without accessible name
+      */}
+      <div
+        tabIndex={0}
+        onClick={() => load()}
+        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', cursor: 'pointer', padding: '0.25rem 0.75rem', border: '1px solid var(--color-border)', borderRadius: '4px', marginBottom: '0.5rem' }}
+      >
+        <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M3 18h6v-2H3v2zm0-5h12v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        Filter
+      </div>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)', fontWeight: 400 }}>
         Every request you've submitted, most recent first.
       </p>
       <DataTable

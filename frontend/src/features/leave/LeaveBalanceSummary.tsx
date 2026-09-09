@@ -28,7 +28,7 @@ export function LeaveBalanceSummary({ balances }: LeaveBalanceSummaryProps) {
               aria-valuenow={b.used}
               aria-valuemin={0}
               aria-valuemax={b.allocated}
-              aria-label={`${b.leaveType.name}: ${b.used} of ${b.allocated} days used`}
+              aria-label={`${b.leaveType.name} leave used`}
             >
               <div className={styles.fill} style={{ width: `${pct}%` }} />
             </div>
