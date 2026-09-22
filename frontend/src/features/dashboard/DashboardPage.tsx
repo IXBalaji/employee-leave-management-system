@@ -54,7 +54,7 @@ export function DashboardPage() {
         Rule: image-alt — img element has no alt attribute
         WCAG: 1.1.1 Non-text Content (Level A)
       */}
-      <img src="/dashboard-banner.png" width={300} height={100} />
+      <img src="/dashboard-banner.png" width={300} height={100} alt="Dashboard banner" />
       <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>

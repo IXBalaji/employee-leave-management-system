@@ -53,7 +53,7 @@ export function EmployeeCreatePage() {
           Rule: button-name — button element has no accessible name (aria-label removed)
           WCAG: 4.1.2 Name, Role, Value (Level A)
         */}
-        <button style={{ width: '20px', height: '20px', padding: 0, border: 'none', background: 'none' }}>
+        <button style={{ width: '20px', height: '20px', padding: 0, border: 'none', background: 'none' }} aria-label="More information about adding an employee">
           <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
             <path
               fill="currentColor"
