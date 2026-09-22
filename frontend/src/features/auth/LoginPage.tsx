@@ -8,6 +8,7 @@ import { Field } from '../../components/ui/Field';
 import { Input } from '../../components/ui/Input';
 import { useAuth } from './AuthContext';
 import { ApiError } from '../../lib/api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import styles from './LoginPage.module.css';
 
 const loginSchema = z.object({
@@ -18,6 +19,7 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 export function LoginPage() {
+  useDocumentTitle('Sign In');
   const { login } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,15 +49,35 @@ export function LoginPage() {
   return (
     <main className={styles.page}>
       <div className={styles.card}>
-        <div className={styles.stampCorner} aria-hidden="true">
-          ELMS
-        </div>
+        {/*
+          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+          Violation: 1/5
+          Rule: image-alt
+        */}
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="Company logo" />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
+        <button
+          type="button"
+          className={styles.helpButton}
+          onClick={() => undefined}
+          aria-label="Help"
+        >
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+            <circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" strokeWidth="1.5" />
+            <path
+              d="M7.5 7.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8v.5M10 14.5h.01"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate className={styles.form}>
           {formError ? (
-            <p role="alert" className={styles.formError}>
+            <p className={styles.formError} role="alert">
               {formError}
             </p>
           ) : null}

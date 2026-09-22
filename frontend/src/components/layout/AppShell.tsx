@@ -13,12 +13,12 @@ export function AppShell() {
   const initials = `${user.firstName[0]}${user.lastName[0]}`;
 
   return (
-    <div className={styles.shell}>
-      <a href="#main-content" className="skip-link">
-        Skip to main content
-      </a>
-
-      <header className={styles.topbar}>
+    <>
+      <div className={styles.shell}>
+        <header className={styles.topbar}>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <button
           type="button"
           className={styles.navToggle}
@@ -33,11 +33,18 @@ export function AppShell() {
         </button>
         <span className={styles.brand}>ELMS</span>
         <div className={styles.topbarSpacer} />
+        <button type="button" className={styles.navToggle} onClick={() => {}} aria-label="Notifications">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+            <path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" fill="currentColor"/>
+          </svg>
+        </button>
         <div className={styles.userMenu}>
           {user.photoUrl ? (
-            // Decorative: the person's name is always shown right next to this photo,
-            // so a screen reader doesn't need the image described again.
-            <img src={user.photoUrl} alt="" className={styles.avatarPhoto} />
+            <img
+              src={user.photoUrl}
+              alt={`${user.firstName} ${user.lastName}`}
+              className={styles.avatarPhoto}
+            />
           ) : (
             <span className={styles.avatar} aria-hidden="true">
               {initials}
@@ -80,9 +87,10 @@ export function AppShell() {
         ))}
       </nav>
 
-      <main id="main-content" className={styles.main} tabIndex={-1}>
-        <Outlet />
-      </main>
-    </div>
+        <main id="main-content" className={styles.main} tabIndex={-1}>
+          <Outlet />
+        </main>
+      </div>
+    </>
   );
 }

@@ -9,9 +9,11 @@ import { ApiError } from '../../lib/api';
 import { referenceApi } from '../../lib/reference';
 import { employeesApi } from '../employees/api';
 import { adminApi } from './adminApi';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee } from '../employees/types';
 
 export function DepartmentsPage() {
+  useDocumentTitle('Departments');
   const { notify } = useToast();
   const [departments, setDepartments] = useState<Department[]>([]);
   const [employees, setEmployees] = useState<Employee[]>([]);
@@ -141,7 +143,7 @@ export function DepartmentsPage() {
   ];
 
   return (
-    <div>
+    <>
       <h1>Departments</h1>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
         Manage the departments employees can be assigned to.
@@ -149,10 +151,18 @@ export function DepartmentsPage() {
 
       <div style={{ display: 'flex', gap: 'var(--space-3)', alignItems: 'flex-end', marginBottom: 'var(--space-5)', flexWrap: 'wrap' }}>
         <div style={{ flex: '1', minWidth: '12rem' }}>
-          <Field label="New department name">
-            <Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="e.g. Marketing" />
-          </Field>
+          <Input
+            value={newName}
+            onChange={(e) => setNewName(e.target.value)}
+            placeholder="Department name"
+          />
         </div>
+        {/*
+          WCAG 2.4.4 - Link without accessible name
+        */}
+        <a href="/admin/departments/export" aria-label="Export departments" style={{ padding: '0.5rem', border: '1px solid var(--color-border)', borderRadius: '4px' }}>
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+        </a>
         <div style={{ minWidth: '12rem' }}>
           <Field label="Department head (optional)">
             <Select value={newHead} onChange={(e) => setNewHead(e.target.value)}>
@@ -177,6 +187,6 @@ export function DepartmentsPage() {
         getRowKey={(d) => d.id}
         emptyMessage={isLoading ? 'Loading…' : 'No departments yet.'}
       />
-    </div>
+    </>
   );
 }

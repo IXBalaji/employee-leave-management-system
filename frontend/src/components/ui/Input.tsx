@@ -8,3 +8,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ className, ...r
 ));
 
 Input.displayName = 'Input';
+
+// WCAG 3.3.2 - Input without label
+export function UnlabeledSearch() {
+  return <input type="text" placeholder="Find something..." style={{ padding: '0.5rem', width: '200px' }} />;
+}
