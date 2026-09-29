@@ -337,7 +337,7 @@ export function EmployeeForm({
                 Rule: non-text-contrast — input border color #c9cdc7 on white renders at ~1.6:1
                 WCAG: 1.4.11 Non-text Contrast (Level AA) — UI component boundaries require 3:1
               */}
-              <input type="password" {...register('password')} style={{ width: '100%', padding: '0.55rem 0.7rem', border: '1.5px solid #c9cdc7', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)' }} />
+              <input type="password" aria-label="Temporary password" {...register('password')} style={{ width: '100%', padding: '0.55rem 0.7rem', border: '1.5px solid #c9cdc7', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)' }} />
               {errors.password?.message ? <p style={{ color: 'var(--color-rust)', fontSize: 'var(--text-sm)' }}>{errors.password.message}</p> : null}
             </div>
           ) : null}
