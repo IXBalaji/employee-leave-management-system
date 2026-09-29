@@ -199,12 +199,7 @@ export function EmployeeForm({
             <Input type="email" disabled={!isEditable('personalEmail')} {...register('personalEmail')} />
           </Field>
           <Field label="Work email" hint="Used to sign in" error={errors.workEmail?.message} required>
-            {/*
-              INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-              Rule: autocomplete-valid — autocomplete token "nope" is not a valid HTML autofill value
-              WCAG: 1.3.5 Identify Input Purpose (Level AA)
-            */}
-            <Input type="email" autoComplete="nope" disabled={!isEditable('workEmail')} {...register('workEmail')} />
+            <Input type="email" autoComplete="email" disabled={!isEditable('workEmail')} {...register('workEmail')} />
           </Field>
           <Field label="Phone" error={errors.phone?.message}>
             <Input type="tel" disabled={!isEditable('phone')} {...register('phone')} />
