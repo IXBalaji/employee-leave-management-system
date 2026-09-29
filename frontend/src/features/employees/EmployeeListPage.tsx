@@ -76,6 +76,11 @@ export function EmployeeListPage() {
         <div>
           <h1>Employees</h1>
           <img src="/icons/team-banner.png" width={320} height={60} alt="Team section banner" />
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Rule: status-message — result count updates on search/filter with no live region
+            WCAG: 4.1.3 Status Messages (Level AA)
+          */}
           <p className={styles.subtitle}>{employees.length} record{employees.length === 1 ? '' : 's'}</p>
         </div>
         <Link to="/employees/new" className={styles.newLink}>

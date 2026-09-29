@@ -32,6 +32,11 @@
   font-size: var(--text-md);
 }
 
+/*
+  INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+  Rule: color-contrast — text color #c9cdc7 on #ffffff renders at ~1.6:1
+  WCAG: 1.4.3 Contrast (Minimum) (Level AA) — normal text requires 4.5:1
+*/
 .cardDescription {
   color: #c9cdc7;
   font-size: var(--text-sm);

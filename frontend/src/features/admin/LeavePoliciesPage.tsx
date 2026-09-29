@@ -87,7 +87,10 @@ export function LeavePoliciesPage() {
               <div className={styles.cardHeader}>
                 <div>
                   <h2 className={styles.cardTitle}>{policy.name}</h2>
-                  {policy.description ? <p className={styles.cardDescription}>{policy.description}</p> : null}
+                  {policy.description ? (
+                    // INTENTIONAL A11Y VIOLATION: see LeavePoliciesPage.module.css .cardDescription — WCAG 1.4.3 (AA)
+                    <p className={styles.cardDescription}>{policy.description}</p>
+                  ) : null}
                 </div>
                 <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
                   <Button size="sm" variant="secondary" onClick={() => setEditing(policy)}>
