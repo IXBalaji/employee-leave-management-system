@@ -331,7 +331,7 @@ export function EmployeeForm({
           {mode === 'create' && canEditAll ? (
             <div>
               <span style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>Temporary password *</span>
-              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-ink-faint)' }}>At least 8 characters. The employee can change it later.</p>
+              <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-ink-muted)' }}>At least 8 characters. The employee can change it later.</p>
               {/*
                 INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
                 Rule: non-text-contrast — input border color #c9cdc7 on white renders at ~1.6:1
