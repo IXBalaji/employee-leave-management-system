@@ -199,7 +199,12 @@ export function EmployeeForm({
             <Input type="email" disabled={!isEditable('personalEmail')} {...register('personalEmail')} />
           </Field>
           <Field label="Work email" hint="Used to sign in" error={errors.workEmail?.message} required>
-            <Input type="email" disabled={!isEditable('workEmail')} {...register('workEmail')} />
+            {/*
+              INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+              Rule: autocomplete-valid — autocomplete token "nope" is not a valid HTML autofill value
+              WCAG: 1.3.5 Identify Input Purpose (Level AA)
+            */}
+            <Input type="email" autoComplete="nope" disabled={!isEditable('workEmail')} {...register('workEmail')} />
           </Field>
           <Field label="Phone" error={errors.phone?.message}>
             <Input type="tel" disabled={!isEditable('phone')} {...register('phone')} />
@@ -327,7 +332,12 @@ export function EmployeeForm({
             <div>
               <span style={{ fontWeight: 600, fontSize: 'var(--text-sm)' }}>Temporary password *</span>
               <p style={{ fontSize: 'var(--text-xs)', color: 'var(--color-ink-faint)' }}>At least 8 characters. The employee can change it later.</p>
-              <input type="password" {...register('password')} style={{ width: '100%', padding: '0.55rem 0.7rem', border: '1.5px solid var(--color-rule-strong)', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)' }} />
+              {/*
+                INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+                Rule: non-text-contrast — input border color #c9cdc7 on white renders at ~1.6:1
+                WCAG: 1.4.11 Non-text Contrast (Level AA) — UI component boundaries require 3:1
+              */}
+              <input type="password" {...register('password')} style={{ width: '100%', padding: '0.55rem 0.7rem', border: '1.5px solid #c9cdc7', borderRadius: 'var(--radius-md)', fontFamily: 'var(--font-body)', fontSize: 'var(--text-base)' }} />
               {errors.password?.message ? <p style={{ color: 'var(--color-rust)', fontSize: 'var(--text-sm)' }}>{errors.password.message}</p> : null}
             </div>
           ) : null}

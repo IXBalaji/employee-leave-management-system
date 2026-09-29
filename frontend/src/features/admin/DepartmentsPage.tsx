@@ -130,6 +130,13 @@ export function DepartmentsPage() {
             </Button>
           </div>
         ) : (
+          /*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Rule: identical accessible names for different actions — every row renders a button
+            with the accessible name "Edit" and another named "Delete"; out of table/row context
+            (e.g. a screen reader's buttons list) they are indistinguishable from one department to another.
+            WCAG: 2.4.6 Headings and Labels (Level AA) — labels should describe purpose/destination
+          */
           <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
             <Button size="sm" variant="secondary" onClick={() => startEdit(d)}>
               Edit
