@@ -48,14 +48,11 @@ export function ApprovalsPage() {
       key: 'comment',
       header: 'Comment (optional)',
       render: (r) => (
-        <label>
-          <span className="visually-hidden">Comment for {r.employee.firstName} {r.employee.lastName}'s request</span>
-          <Input
-            value={comments[r.id] ?? ''}
-            onChange={(e) => setComments((prev) => ({ ...prev, [r.id]: e.target.value }))}
-            placeholder="Optional note"
-          />
-        </label>
+        <Input
+          value={comments[r.id] ?? ''}
+          onChange={(e) => setComments((prev) => ({ ...prev, [r.id]: e.target.value }))}
+          placeholder="Optional note"
+        />
       ),
     },
     {

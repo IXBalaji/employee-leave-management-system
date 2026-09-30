@@ -47,7 +47,9 @@ export function DashboardPage() {
 
   return (
     <>
-      <h1>Welcome back, {user?.firstName}</h1>
+      <h1>
+        Welcome back, {user?.firstName} <span lang="englando">— hope your day's going great</span>
+      </h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
       {/*
         INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
@@ -86,7 +88,7 @@ export function DashboardPage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Upcoming holidays</h2>
+        <h4 className={styles.sectionTitle}>Upcoming holidays</h4>
         {upcomingHolidays.length === 0 ? (
           <p style={{ color: 'var(--color-ink-muted)' }}>No upcoming holidays on the calendar.</p>
         ) : (

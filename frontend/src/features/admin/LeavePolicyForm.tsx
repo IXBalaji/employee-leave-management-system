@@ -71,7 +71,7 @@ export function LeavePolicyForm({ leaveTypes, initialData, submitting, onSubmit,
         </Field>
       </div>
 
-      <h2 className={styles.rulesTitle}>Leave type rules</h2>
+      <h4 className={styles.rulesTitle}>Leave type rules</h4>
       {errors.rules?.message ? (
         <p role="alert" className={styles.rulesError}>
           {errors.rules.message}
