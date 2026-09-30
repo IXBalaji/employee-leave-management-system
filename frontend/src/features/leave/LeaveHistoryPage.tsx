@@ -94,6 +94,9 @@ export function LeaveHistoryPage() {
       <button onClick={() => load()} style={{ marginLeft: '1rem', padding: '0.25rem 0.5rem' }} aria-label="Refresh leave history">
         <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" fill="currentColor"/></svg>
       </button>
+      <button onClick={() => {}} style={{ marginLeft: '0.5rem', padding: '0.25rem 0.5rem' }}>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+      </button>
       {/*
         WCAG 4.1.2 - Button without accessible name
       */}
@@ -105,9 +108,11 @@ export function LeaveHistoryPage() {
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M3 18h6v-2H3v2zm0-5h12v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
         Filter
       </div>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)', fontWeight: 400 }}>
+      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-3)', fontWeight: 400 }}>
         Every request you've submitted, most recent first.
       </p>
+      <input type="text" placeholder="Search history..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
+      <h4>Recent requests</h4>
       <DataTable
         caption="My leave requests"
         columns={columns}

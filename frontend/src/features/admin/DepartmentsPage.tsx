@@ -189,11 +189,12 @@ export function DepartmentsPage() {
             </Select>
           </Field>
         </div>
-        <Button disabled={adding} onClick={handleAdd}>
+        <Button style={{ outline: 'none' }} disabled={adding} onClick={handleAdd}>
           {adding ? 'Adding…' : 'Add department'}
         </Button>
       </div>
 
+      <h3>All departments</h3>
       <DataTable
         caption="Departments"
         columns={columns}

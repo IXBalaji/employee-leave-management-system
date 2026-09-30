@@ -60,7 +60,7 @@ export function ApprovalsPage() {
       header: 'Decision',
       render: (r) => (
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <Button size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
+          <Button size="sm" style={{ outline: 'none' }} disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
             Approve
           </Button>
           <Button variant="danger" size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'REJECTED')}>
@@ -78,7 +78,10 @@ export function ApprovalsPage() {
     <div>
       <h1>Approvals</h1>
       <img src="/icons/approvals-banner.png" width={280} height={48} alt="Approvals section banner" />
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
+      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-3)' }}>Requests waiting on your decision.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Gracias por tu paciencia mientras revisamos las solicitudes.</p>
+      <input type="text" placeholder="Search requests..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
+      <h4>Pending decisions</h4>
       <DataTable
         caption="Pending leave requests"
         columns={columns}

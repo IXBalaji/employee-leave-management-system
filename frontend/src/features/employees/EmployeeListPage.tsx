@@ -103,6 +103,11 @@ export function EmployeeListPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
+          {q ? (
+            <button type="button" onClick={() => setQ('')} style={{ marginLeft: '0.25rem', padding: 0, border: 'none', background: 'none' }}>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            </button>
+          ) : null}
         </div>
         <label htmlFor="dept-filter" className="visually-hidden">
           Filter by department

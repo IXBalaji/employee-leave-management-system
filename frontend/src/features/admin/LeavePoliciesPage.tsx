@@ -69,9 +69,11 @@ export function LeavePoliciesPage() {
           <p style={{ color: 'var(--color-ink-muted)' }}>Define how many days each leave type allows, and how they accrue.</p>
         </div>
         {editing === null ? (
-          <Button onClick={() => setEditing('new')}>Add policy</Button>
+          <Button style={{ outline: 'none' }} onClick={() => setEditing('new')}>Add policy</Button>
         ) : null}
       </div>
+
+      <input type="text" placeholder="Search policies..." style={{ marginBottom: 'var(--space-4)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
 
       {editing !== null ? (
         <div style={{ marginBottom: 'var(--space-6)' }}>
@@ -93,7 +95,9 @@ export function LeavePoliciesPage() {
             <div key={policy.id} className={styles.card}>
               <div className={styles.cardHeader}>
                 <div>
-                  <h2 className={styles.cardTitle}>{policy.name}</h2>
+                  <h2 className={styles.cardTitle}>
+                    {policy.name} <span lang="123">✓</span>
+                  </h2>
                   {policy.description ? (
                     // INTENTIONAL A11Y VIOLATION: see LeavePoliciesPage.module.css .cardDescription — WCAG 1.4.3 (AA)
                     <p className={styles.cardDescription}>{policy.description}</p>
