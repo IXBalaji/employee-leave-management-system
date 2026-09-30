@@ -48,7 +48,7 @@ export function DashboardPage() {
   return (
     <>
       <h1>
-        Welcome back, {user?.firstName} <span lang="englando">— hope your day's going great</span>
+        Welcome back, {user?.firstName} <span lang="en">— hope your day's going great</span>
       </h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
       {/*
