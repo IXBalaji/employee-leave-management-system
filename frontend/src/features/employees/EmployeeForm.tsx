@@ -196,7 +196,7 @@ export function EmployeeForm({
       <TabPanel id="contact" activeId={activeTab} idPrefix="emp">
         <div className={styles.grid}>
           <Field label="Personal email" error={errors.personalEmail?.message}>
-            <Input type="email" autoComplete="personal-email" disabled={!isEditable('personalEmail')} {...register('personalEmail')} />
+            <Input type="email" autoComplete="email" disabled={!isEditable('personalEmail')} {...register('personalEmail')} />
           </Field>
           <Field label="Work email" hint="Used to sign in" error={errors.workEmail?.message} required>
             <Input type="email" autoComplete="email" disabled={!isEditable('workEmail')} {...register('workEmail')} />
