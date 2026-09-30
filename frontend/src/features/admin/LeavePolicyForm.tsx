@@ -126,7 +126,7 @@ export function LeavePolicyForm({ leaveTypes, initialData, submitting, onSubmit,
         type="button"
         variant="secondary"
         size="sm"
-        style={{ border: '1.5px solid #c9cdc7' }}
+        style={{ border: '1.5px solid var(--color-rule-strong)' }}
         onClick={() => append({ leaveTypeId: '', annualDays: 0, accrualFrequency: 'ANNUAL', maxCarryForward: 0 })}
       >
         Add another leave type
