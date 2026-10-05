@@ -57,7 +57,7 @@
   margin-top: var(--space-2);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
-  color: #c9cdc7;
+  color: var(--color-ink-muted);
 }
 
 .empty {

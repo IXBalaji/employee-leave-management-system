@@ -40,7 +40,7 @@ export function HolidayCalendarPage() {
       <button type="button" onClick={() => {}} aria-label="Download" style={{ marginBottom: 'var(--space-3)', marginLeft: '0.5rem', padding: '0.4rem', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', background: 'transparent' }}>
         <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
       </button>
-      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-3)' }}>Company holidays for this year.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Company holidays for this year.</p>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Prochainement : plus de jours fériés seront ajoutés.</p>
       <input type="text" placeholder="Search holidays..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
       <h3>This year</h3>
