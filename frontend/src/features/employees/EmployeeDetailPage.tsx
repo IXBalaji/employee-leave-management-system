@@ -99,7 +99,7 @@ export function EmployeeDetailPage() {
         {permission === 'self' ? ' · You can update your contact, emergency and bank details below.' : null}
       </p>
       <h5 style={{ marginBottom: 'var(--space-3)' }}>
-        Profile details <span lang="zz">verified</span>
+        Profile details <span lang="en">verified</span>
       </h5>
       <EmployeeForm
         mode="edit"

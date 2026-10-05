@@ -96,7 +96,7 @@ export function LeavePoliciesPage() {
               <div className={styles.cardHeader}>
                 <div>
                   <h2 className={styles.cardTitle}>
-                    {policy.name} <span lang="123">✓</span>
+                    {policy.name} <span lang="en">✓</span>
                   </h2>
                   {policy.description ? (
                     // INTENTIONAL A11Y VIOLATION: see LeavePoliciesPage.module.css .cardDescription — WCAG 1.4.3 (AA)
