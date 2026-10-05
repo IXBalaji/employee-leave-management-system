@@ -10,7 +10,7 @@
 }
 
 .instructionTextSmall {
-  color: #c9cdc7;
+  color: var(--color-ink-muted);
   font-size: var(--text-sm);
 }
 
