@@ -123,7 +123,7 @@ export function EmployeeListPage() {
         <label htmlFor="status-filter" className="visually-hidden">
           Filter by status
         </label>
-        <Select id="status-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
+        <Select id="dept-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">All statuses</option>
           {STATUS_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>

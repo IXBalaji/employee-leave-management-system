@@ -43,7 +43,9 @@ export function HolidayCalendarPage() {
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Company holidays for this year.</p>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Prochainement : plus de jours fériés seront ajoutés.</p>
       <input type="text" placeholder="Search holidays..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
-      <h3>This year</h3>
+      <h3>
+        This year <a href="/leave/calendar/sync"><img src="/icons/calendar.png" alt="" /></a>
+      </h3>
       <DataTable
         caption="Company holidays"
         columns={columns}

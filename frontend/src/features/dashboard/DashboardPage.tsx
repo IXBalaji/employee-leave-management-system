@@ -88,6 +88,24 @@ export function DashboardPage() {
       </section>
 
       <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>This week's schedule</h2>
+        <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <tbody>
+            <tr>
+              <td style={{ fontWeight: 700, textAlign: 'left', padding: 'var(--space-2)' }}>Day</td>
+              <td style={{ fontWeight: 700, textAlign: 'left', padding: 'var(--space-2)' }}>On leave</td>
+              <td style={{ fontWeight: 700, textAlign: 'left', padding: 'var(--space-2)' }}>Approvals due</td>
+            </tr>
+            <tr>
+              <td style={{ padding: 'var(--space-2)' }}>Monday</td>
+              <td style={{ padding: 'var(--space-2)' }}>{approvalsCount ?? '—'}</td>
+              <td style={{ padding: 'var(--space-2)' }}>{employeeCount ?? '—'}</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section className={styles.section}>
         <h4 className={styles.sectionTitle}>Upcoming holidays</h4>
         {upcomingHolidays.length === 0 ? (
           <p style={{ color: 'var(--color-ink-muted)' }}>No upcoming holidays on the calendar.</p>
