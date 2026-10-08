@@ -6,6 +6,7 @@ import { StatusStamp, type StampTone } from '../../components/ui/StatusStamp';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { employeesApi } from './api';
 import { referenceApi } from '../../lib/reference';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { Department, Employee, EmployeeStatus } from './types';
 import { STATUS_OPTIONS } from './schema';
 import styles from './EmployeeListPage.module.css';
@@ -23,6 +24,7 @@ const STATUS_LABEL: Record<EmployeeStatus, string> = {
 };
 
 export function EmployeeListPage() {
+  useDocumentTitle('Employees');
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [departments, setDepartments] = useState<Department[]>([]);
   const [q, setQ] = useState('');
@@ -73,11 +75,20 @@ export function EmployeeListPage() {
       <div className={styles.header}>
         <div>
           <h1>Employees</h1>
+          <img src="/icons/team-banner.png" width={320} height={60} alt="Team section banner" />
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Rule: status-message — result count updates on search/filter with no live region
+            WCAG: 4.1.3 Status Messages (Level AA)
+          */}
           <p className={styles.subtitle}>{employees.length} record{employees.length === 1 ? '' : 's'}</p>
         </div>
         <Link to="/employees/new" className={styles.newLink}>
           Add employee
         </Link>
+        <a href="/employees/export" className={styles.newLink} aria-label="Export employees">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+        </a>
       </div>
 
       <div className={styles.filters}>
@@ -92,6 +103,11 @@ export function EmployeeListPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
           />
+          {q ? (
+            <button type="button" onClick={() => setQ('')} style={{ marginLeft: '0.25rem', padding: 0, border: 'none', background: 'none' }}>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M3.5 3.5 12.5 12.5M12.5 3.5 3.5 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg>
+            </button>
+          ) : null}
         </div>
         <label htmlFor="dept-filter" className="visually-hidden">
           Filter by department
@@ -107,7 +123,7 @@ export function EmployeeListPage() {
         <label htmlFor="status-filter" className="visually-hidden">
           Filter by status
         </label>
-        <Select id="status-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
+        <Select id="dept-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">All statuses</option>
           {STATUS_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>

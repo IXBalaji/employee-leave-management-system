@@ -31,6 +31,16 @@
   background: color-mix(in srgb, var(--color-teal) 85%, black);
 }
 
+/*
+  INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+  Rule: focus visible — keyboard focus indicator is suppressed with no replacement style
+  WCAG: 2.4.7 Focus Visible (Level AA)
+*/
+.newLink:focus,
+.newLink:focus-visible {
+  outline: none;
+}
+
 .filters {
   display: flex;
   gap: var(--space-3);

@@ -30,3 +30,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 );
 
 Button.displayName = 'Button';
+
+// WCAG 4.1.2 - Empty button without accessible name
+export function IconButton() {
+  return (
+    <button type="button" style={{ width: '24px', height: '24px', padding: 0, border: 'none' }}>
+      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="currentColor" /></svg>
+    </button>
+  );
+}

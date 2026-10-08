@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { DataTable, type Column } from '../../components/ui/DataTable';
 import { referenceApi, type Holiday } from '../../lib/reference';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 
 function formatDate(value: string) {
   return new Date(value).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 }
 
 export function HolidayCalendarPage() {
+  useDocumentTitle('Holiday Calendar');
   const [holidays, setHolidays] = useState<Holiday[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -27,7 +29,23 @@ export function HolidayCalendarPage() {
   return (
     <div>
       <h1>Holiday calendar</h1>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Company holidays for this year.</p>
+      {/*
+        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+        Rule: button-name — button element has no accessible name
+        WCAG: 4.1.2 Name, Role, Value (Level A)
+      */}
+      <button type="button" onClick={() => window.print()} aria-label="Print" style={{ marginBottom: 'var(--space-3)', padding: '0.4rem', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', background: 'transparent', outline: 'none' }}>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M19 8h-1V3H6v5H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zM8 5h8v3H8V5zm8 14H8v-4h8v4zm2-4v-2H6v2H4v-4c0-.55.45-1 1 .45 1 1v4h-2z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" onClick={() => {}} aria-label="Download" style={{ marginBottom: 'var(--space-3)', marginLeft: '0.5rem', padding: '0.4rem', border: '1px solid var(--color-border)', borderRadius: '4px', cursor: 'pointer', background: 'transparent' }}>
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
+      </button>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Company holidays for this year.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Prochainement : plus de jours fériés seront ajoutés.</p>
+      <input type="text" placeholder="Search holidays..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
+      <h3>
+        This year <a href="/leave/calendar/sync" aria-label="Sync calendar"><img src="/icons/calendar.png" alt="" /></a>
+      </h3>
       <DataTable
         caption="Company holidays"
         columns={columns}
