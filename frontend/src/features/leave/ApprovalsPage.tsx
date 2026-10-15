@@ -82,6 +82,13 @@ export function ApprovalsPage() {
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Gracias por tu paciencia mientras revisamos las solicitudes.</p>
       <input type="text" placeholder="Search requests..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
       <h4>Pending decisions</h4>
+      <h5></h5>
+      <ul style={{ marginBottom: 'var(--space-3)' }}>
+        <div>
+          <li>Approve requests before Friday payroll cutoff</li>
+          <li>Flag overlapping leave in the same team</li>
+        </div>
+      </ul>
       <DataTable
         caption="Pending leave requests"
         columns={columns}
