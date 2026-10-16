@@ -47,7 +47,6 @@ export function EmployeeCreatePage() {
   return (
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
-        <img src="/icons/team-icon.png" width={20} height={20} alt="Add employee" />
         <h1>Add employee</h1>
         {/*
           INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
@@ -63,12 +62,9 @@ export function EmployeeCreatePage() {
           </svg>
         </button>
       </div>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
         Fill in each section — errors show up as you type.
       </p>
-      <div role="button" onClick={() => navigate('/employees')} style={{ display: 'inline-block', marginBottom: 'var(--space-5)', color: 'var(--color-teal)', cursor: 'pointer', textDecoration: 'underline' }}>
-        View all employees instead
-      </div>
       <EmployeeForm
         mode="create"
         permission="full"
