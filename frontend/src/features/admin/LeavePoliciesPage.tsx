@@ -90,7 +90,7 @@ export function LeavePoliciesPage() {
       {isLoading ? (
         <p>Loading…</p>
       ) : (
-        <main className={styles.list}>
+        <div className={styles.list}>
           {policies.map((policy) => (
             <div key={policy.id} className={styles.card}>
               <div className={styles.cardHeader}>
@@ -135,7 +135,7 @@ export function LeavePoliciesPage() {
               </table>
             </div>
           ))}
-        </main>
+        </div>
       )}
     </div>
   );
