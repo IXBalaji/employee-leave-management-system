@@ -5,6 +5,7 @@ import { Input } from '../../components/ui/Input';
 import { useToast } from '../../components/ui/Toast';
 import { ApiError } from '../../lib/api';
 import { leaveApi } from './api';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveRequest } from './types';
 
 function formatDate(value: string) {
@@ -12,6 +13,7 @@ function formatDate(value: string) {
 }
 
 export function ApprovalsPage() {
+  useDocumentTitle('Leave Approvals');
   const { notify } = useToast();
   const [requests, setRequests] = useState<LeaveRequest[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -46,14 +48,11 @@ export function ApprovalsPage() {
       key: 'comment',
       header: 'Comment (optional)',
       render: (r) => (
-        <label>
-          <span className="visually-hidden">Comment for {r.employee.firstName} {r.employee.lastName}'s request</span>
-          <Input
-            value={comments[r.id] ?? ''}
-            onChange={(e) => setComments((prev) => ({ ...prev, [r.id]: e.target.value }))}
-            placeholder="Optional note"
-          />
-        </label>
+        <Input
+          value={comments[r.id] ?? ''}
+          onChange={(e) => setComments((prev) => ({ ...prev, [r.id]: e.target.value }))}
+          placeholder="Optional note"
+        />
       ),
     },
     {
@@ -61,12 +60,15 @@ export function ApprovalsPage() {
       header: 'Decision',
       render: (r) => (
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <Button size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
+          <Button size="sm" style={{ outline: 'none' }} disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
             Approve
           </Button>
           <Button variant="danger" size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'REJECTED')}>
             Reject
           </Button>
+          <button aria-label="Delete" onClick={() => {}}>
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12z" fill="currentColor"/></svg>
+          </button>
         </div>
       ),
     },
@@ -75,7 +77,11 @@ export function ApprovalsPage() {
   return (
     <div>
       <h1>Approvals</h1>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>Requests waiting on your decision.</p>
+      <img src="/icons/approvals-banner.png" width={280} height={48} alt="Approvals section banner" />
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Requests waiting on your decision.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Gracias por tu paciencia mientras revisamos las solicitudes.</p>
+      <input type="text" placeholder="Search requests..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
+      <h4>Pending decisions</h4>
       <DataTable
         caption="Pending leave requests"
         columns={columns}

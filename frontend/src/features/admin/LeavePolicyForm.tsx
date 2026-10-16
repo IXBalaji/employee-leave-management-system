@@ -71,7 +71,7 @@ export function LeavePolicyForm({ leaveTypes, initialData, submitting, onSubmit,
         </Field>
       </div>
 
-      <h2 className={styles.rulesTitle}>Leave type rules</h2>
+      <h4 className={styles.rulesTitle}>Leave type rules</h4>
       {errors.rules?.message ? (
         <p role="alert" className={styles.rulesError}>
           {errors.rules.message}
@@ -126,6 +126,7 @@ export function LeavePolicyForm({ leaveTypes, initialData, submitting, onSubmit,
         type="button"
         variant="secondary"
         size="sm"
+        style={{ border: '1.5px solid var(--color-rule-strong)' }}
         onClick={() => append({ leaveTypeId: '', annualDays: 0, accrualFrequency: 'ANNUAL', maxCarryForward: 0 })}
       >
         Add another leave type

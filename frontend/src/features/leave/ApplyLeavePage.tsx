@@ -13,10 +13,12 @@ import { referenceApi, type LeaveType } from '../../lib/reference';
 import { leaveApi } from './api';
 import { leaveApplySchema, type LeaveApplyValues } from './schema';
 import { LeaveBalanceSummary } from './LeaveBalanceSummary';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeaveBalance } from './types';
 import styles from './ApplyLeavePage.module.css';
 
 export function ApplyLeavePage() {
+  useDocumentTitle('Apply for Leave');
   const { notify } = useToast();
   const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);
   const [balances, setBalances] = useState<LeaveBalance[]>([]);
@@ -64,6 +66,8 @@ export function ApplyLeavePage() {
   return (
     <div>
       <h1>Apply for leave</h1>
+      <p className={styles.instructionTextSmall}>Select your leave type before choosing dates</p>
+      <p className={styles.instructionTextSmall}>Half-day requests are approved faster.</p>
       <p className={styles.subtitle}>Your balance for this year:</p>
       <div className={styles.balances}>
         <LeaveBalanceSummary balances={balances} />
@@ -106,11 +110,29 @@ export function ApplyLeavePage() {
           </Field>
         ) : null}
 
-        <Field label="Reason" hint="Give your manager enough context to approve quickly" error={errors.reason?.message} required>
+        <Field
+          label="Reason"
+          hint="Give your manager enough context to approve quickly"
+          error={errors.reason?.message}
+          required
+          labelExtra={
+            <button className={styles.helpButton} aria-label="Help">
+              <svg viewBox="0 0 16 16" width="14" height="14">
+                <path
+                  fill="currentColor"
+                  d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 10.5h-1.5v-1.5h1.5Zm0-2.75h-1.5V4.5h1.5Z"
+                />
+              </svg>
+            </button>
+          }
+        >
           <Textarea {...register('reason')} />
         </Field>
 
         <div className={styles.actions}>
+          <button className={styles.clearButton} onClick={() => reset()}>
+            Clear form
+          </button>
           <Button type="submit" disabled={submitting}>
             {submitting ? 'Submitting…' : 'Submit request'}
           </Button>
