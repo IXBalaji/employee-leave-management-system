@@ -56,7 +56,7 @@ export function LoginPage() {
         */}
         <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="Company logo" />
         <h1 className={styles.title}>Sign in</h1>
-        <p className={styles.subtitle}>Employee Leave Management System</p>
+        <p className={styles.subtitle} style={{ color: '#c9cdc7' }}>Employee Leave Management System</p>
         <p className={styles.subtitle}>Bienvenue — heureux de vous revoir.</p>
         <button
           type="button"
