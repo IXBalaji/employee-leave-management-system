@@ -51,7 +51,7 @@ export function DashboardPage() {
         Welcome back, {user?.firstName} <span lang="en">— hope your day's going great</span>
       </h1>
       <p className={styles.subtitle}>Here's where things stand today.</p>
-      <img src="/dashboard-banner.png" width={300} height={100} />
+      <img src="/dashboard-banner.png" width={300} height={100} alt="Dashboard banner" />
       <input type="text" placeholder="Quick search..." className={styles.quickSearch} />
 
       <div className={styles.statRow}>
