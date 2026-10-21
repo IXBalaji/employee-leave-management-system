@@ -113,7 +113,7 @@ export function EmployeeDetailPage() {
         serverFieldErrors={fieldErrors}
       />
       {permission !== 'readonly' ? null : (
-        <Button variant="secondary" onClick={() => navigate(-1)} style={{ marginTop: '1rem' }}>
+        <Button variant="secondary" onClick={() => navigate(-1)} style={{ marginTop: '1rem', outline: 'none' }}>
           Back
         </Button>
       )}
