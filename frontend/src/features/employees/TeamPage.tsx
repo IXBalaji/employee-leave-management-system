@@ -57,7 +57,7 @@ export function TeamPage() {
           <svg viewBox="0 0 24 24" width="16" height="16"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/></svg>
         </button>
       </div>
-      <p style={{ color: 'var(--color-ink)', marginBottom: 'var(--space-3)' }}>People who report directly to you.</p>
+      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>People who report directly to you.</p>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Danke für eure harte Arbeit in diesem Quartal.</p>
       <input type="text" placeholder="Search team..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
       <h3>Team roster</h3>
