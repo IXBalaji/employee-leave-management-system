@@ -5,10 +5,12 @@ import { ApiError } from '../../lib/api';
 import { referenceApi, type LeavePolicy, type LeaveType } from '../../lib/reference';
 import { adminApi } from './adminApi';
 import { LeavePolicyForm } from './LeavePolicyForm';
+import { useDocumentTitle } from '../../lib/useDocumentTitle';
 import type { LeavePolicyFormValues } from './leavePolicySchema';
 import styles from './LeavePoliciesPage.module.css';
 
 export function LeavePoliciesPage() {
+  useDocumentTitle('Leave Policies');
   const { notify } = useToast();
   const [policies, setPolicies] = useState<LeavePolicy[]>([]);
   const [leaveTypes, setLeaveTypes] = useState<LeaveType[]>([]);
@@ -56,13 +58,22 @@ export function LeavePoliciesPage() {
     <div>
       <div className={styles.header}>
         <div>
-          <h1>Leave policies</h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+            <h1>Leave policies</h1>
+            <button style={{ width: '20px', height: '20px', padding: 0, border: 'none', background: 'none' }} aria-label="More information about leave policies">
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+                <path fill="currentColor" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1Zm.75 10.5h-1.5v-1.5h1.5Zm0-2.75h-1.5V4.5h1.5Z" />
+              </svg>
+            </button>
+          </div>
           <p style={{ color: 'var(--color-ink-muted)' }}>Define how many days each leave type allows, and how they accrue.</p>
         </div>
         {editing === null ? (
-          <Button onClick={() => setEditing('new')}>Add policy</Button>
+          <Button style={{ outline: 'none' }} onClick={() => setEditing('new')}>Add policy</Button>
         ) : null}
       </div>
+
+      <input type="text" placeholder="Search policies..." style={{ marginBottom: 'var(--space-4)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
 
       {editing !== null ? (
         <div style={{ marginBottom: 'var(--space-6)' }}>
@@ -84,8 +95,13 @@ export function LeavePoliciesPage() {
             <div key={policy.id} className={styles.card}>
               <div className={styles.cardHeader}>
                 <div>
-                  <h2 className={styles.cardTitle}>{policy.name}</h2>
-                  {policy.description ? <p className={styles.cardDescription}>{policy.description}</p> : null}
+                  <h2 className={styles.cardTitle}>
+                    {policy.name} <span lang="en">✓</span>
+                  </h2>
+                  {policy.description ? (
+                    // INTENTIONAL A11Y VIOLATION: see LeavePoliciesPage.module.css .cardDescription — WCAG 1.4.3 (AA)
+                    <p className={styles.cardDescription}>{policy.description}</p>
+                  ) : null}
                 </div>
                 <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
                   <Button size="sm" variant="secondary" onClick={() => setEditing(policy)}>
