@@ -66,7 +66,7 @@ export function LeavePoliciesPage() {
               </svg>
             </button>
           </div>
-          <p style={{ color: '#c9cdc7' }}>Define how many days each leave type allows, and how they accrue.</p>
+          <p style={{ color: 'var(--color-ink-muted)' }}>Define how many days each leave type allows, and how they accrue.</p>
         </div>
         {editing === null ? (
           <Button style={{ outline: 'none' }} onClick={() => setEditing('new')}>Add policy</Button>
