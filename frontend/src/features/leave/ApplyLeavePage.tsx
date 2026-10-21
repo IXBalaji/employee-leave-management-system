@@ -66,6 +66,7 @@ export function ApplyLeavePage() {
   return (
     <div>
       <h1>Apply for leave</h1>
+      <input type="text" placeholder="Search past requests..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
       <p className={styles.instructionTextSmall}>Select your leave type before choosing dates</p>
       <p className={styles.instructionTextSmall}>Half-day requests are approved faster.</p>
       <p className={styles.subtitle}>Your balance for this year:</p>
@@ -130,7 +131,7 @@ export function ApplyLeavePage() {
         </Field>
 
         <div className={styles.actions}>
-          <button className={styles.clearButton} onClick={() => reset()}>
+          <button className={styles.clearButton} style={{ outline: 'none' }} onClick={() => reset()}>
             Clear form
           </button>
           <Button type="submit" disabled={submitting}>
