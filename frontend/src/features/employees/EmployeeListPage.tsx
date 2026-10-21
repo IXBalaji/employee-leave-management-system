@@ -75,7 +75,7 @@ export function EmployeeListPage() {
       <div className={styles.header}>
         <div>
           <h1>Employees</h1>
-          <img src="/icons/team-banner.png" width={320} height={60} alt="Team section banner" />
+          <img src="/icons/team-banner.png" width={320} height={60} />
           {/*
             INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
             Rule: status-message — result count updates on search/filter with no live region
