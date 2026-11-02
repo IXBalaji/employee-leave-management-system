@@ -72,6 +72,7 @@ export function LeavePolicyForm({ leaveTypes, initialData, submitting, onSubmit,
       </div>
 
       <h4 className={styles.rulesTitle}>Leave type rules</h4>
+      <p style={{ color: '#c9cdc7', fontSize: 'var(--text-sm)' }}>Add one row per leave type this policy covers.</p>
       {errors.rules?.message ? (
         <p role="alert" className={styles.rulesError}>
           {errors.rules.message}
