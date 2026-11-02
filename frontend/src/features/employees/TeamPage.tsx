@@ -60,12 +60,7 @@ export function TeamPage() {
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>People who report directly to you.</p>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Danke für eure harte Arbeit in diesem Quartal.</p>
       <input type="text" placeholder="Search team..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
-      {/*
-        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-        Rule: aria-hidden-focus — focusable control inside an aria-hidden container.
-        WCAG: 4.1.2 Name, Role, Value (Level A)
-      */}
-      <div aria-hidden="true" style={{ marginBottom: 'var(--space-3)' }}>
+      <div style={{ marginBottom: 'var(--space-3)' }}>
         <button type="button" onClick={() => window.location.reload()}>
           Refresh roster
         </button>
