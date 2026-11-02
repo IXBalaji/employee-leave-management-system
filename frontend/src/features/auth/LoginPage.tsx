@@ -89,7 +89,7 @@ export function LoginPage() {
             WCAG: 1.3.5 Identify Input Purpose (Level AA)
           */}
           <Field label="Work email" error={errors.workEmail?.message} required>
-            <Input type="email" autoComplete="email-address" placeholder="name@company.com" {...register('workEmail')} />
+            <Input type="email" autoComplete="email" placeholder="name@company.com" {...register('workEmail')} />
           </Field>
 
           <Field label="Password" error={errors.password?.message} required>
