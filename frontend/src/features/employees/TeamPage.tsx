@@ -78,7 +78,7 @@ export function TeamPage() {
         Rule: tabindex — positive tabindex value breaks the natural focus order.
         WCAG: 2.4.3 Focus Order (Level A)
       */}
-      <a href="/employees" tabIndex={5} style={{ display: 'inline-block', marginBottom: 'var(--space-3)' }}>
+      <a href="/employees" style={{ display: 'inline-block', marginBottom: 'var(--space-3)' }}>
         Browse all employees
       </a>
       <h3>Team roster</h3>
