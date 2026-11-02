@@ -54,7 +54,7 @@ export function LoginPage() {
           Violation: 1/5
           Rule: image-alt
         */}
-        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} />
+        <img className={styles.stampCorner} src="/favicon.svg" width={48} height={48} alt="ELMS logo" />
         <h1 className={styles.title}>Sign in</h1>
         <p className={styles.subtitle}>Employee Leave Management System</p>
         <p className={styles.subtitle}>Bienvenue — heureux de vous revoir.</p>
@@ -89,7 +89,7 @@ export function LoginPage() {
             WCAG: 1.3.5 Identify Input Purpose (Level AA)
           */}
           <Field label="Work email" error={errors.workEmail?.message} required>
-            <Input type="email" autoComplete="email-address" placeholder="name@company.com" {...register('workEmail')} />
+            <Input type="email" autoComplete="email" placeholder="name@company.com" {...register('workEmail')} />
           </Field>
 
           <Field label="Password" error={errors.password?.message} required>

@@ -75,7 +75,7 @@ export function EmployeeListPage() {
       <div className={styles.header}>
         <div>
           <h1>Employees</h1>
-          <img src="/icons/team-banner.png" width={320} height={60} />
+          <img src="/icons/team-banner.png" width={320} height={60} alt="Team banner" />
           {/*
             INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
             Rule: status-message — result count updates on search/filter with no live region
@@ -109,11 +109,9 @@ export function EmployeeListPage() {
             </button>
           ) : null}
         </div>
-        {/*
-          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
-          Rule: select-name — department filter has no label or accessible name
-          WCAG: 3.3.2 Labels or Instructions / 4.1.2 Name, Role, Value (Level A)
-        */}
+        <label htmlFor="dept-filter" className="visually-hidden">
+          Filter by department
+        </label>
         <Select id="dept-filter" value={departmentId} onChange={(e) => setDepartmentId(e.target.value)}>
           <option value="">All departments</option>
           {departments.map((d) => (
@@ -125,7 +123,7 @@ export function EmployeeListPage() {
         <label htmlFor="status-filter" className="visually-hidden">
           Filter by status
         </label>
-        <Select id="dept-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
+        <Select id="status-filter" value={status} onChange={(e) => setStatus(e.target.value)}>
           <option value="">All statuses</option>
           {STATUS_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>
