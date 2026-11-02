@@ -159,7 +159,7 @@ export function DepartmentsPage() {
           </svg>
         </button>
       </div>
-      <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-5)' }}>
+      <p style={{ color: '#c9cdc7', marginBottom: 'var(--space-5)' }}>
         Manage the departments employees can be assigned to.
       </p>
 
