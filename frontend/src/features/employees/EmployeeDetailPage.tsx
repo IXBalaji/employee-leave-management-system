@@ -82,6 +82,7 @@ export function EmployeeDetailPage() {
         {employee.photoUrl ? (
           <img
             src={employee.photoUrl}
+            alt={`${employee.firstName} ${employee.lastName}`}
             style={{ width: '3.5rem', height: '3.5rem', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
           />
         ) : null}
