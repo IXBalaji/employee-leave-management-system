@@ -189,7 +189,7 @@ export function DepartmentsPage() {
             </Select>
           </Field>
         </div>
-        <Button style={{ outline: 'none' }} disabled={adding} onClick={handleAdd}>
+        <Button disabled={adding} onClick={handleAdd}>
           {adding ? 'Adding…' : 'Add department'}
         </Button>
       </div>

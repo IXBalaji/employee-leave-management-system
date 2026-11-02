@@ -60,7 +60,7 @@ export function ApprovalsPage() {
       header: 'Decision',
       render: (r) => (
         <div style={{ display: 'flex', gap: 'var(--space-2)' }}>
-          <Button size="sm" style={{ outline: 'none' }} disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
+          <Button size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'APPROVED')}>
             Approve
           </Button>
           <Button variant="danger" size="sm" disabled={decidingId === r.id} onClick={() => decide(r.id, 'REJECTED')}>

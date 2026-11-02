@@ -131,7 +131,7 @@ export function ApplyLeavePage() {
         </Field>
 
         <div className={styles.actions}>
-          <button className={styles.clearButton} style={{ outline: 'none' }} onClick={() => reset()}>
+          <button className={styles.clearButton} onClick={() => reset()}>
             Clear form
           </button>
           <Button type="submit" disabled={submitting}>

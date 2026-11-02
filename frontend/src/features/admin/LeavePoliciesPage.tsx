@@ -69,7 +69,7 @@ export function LeavePoliciesPage() {
           <p style={{ color: 'var(--color-ink-muted)' }}>Define how many days each leave type allows, and how they accrue.</p>
         </div>
         {editing === null ? (
-          <Button style={{ outline: 'none' }} onClick={() => setEditing('new')}>Add policy</Button>
+          <Button onClick={() => setEditing('new')}>Add policy</Button>
         ) : null}
       </div>
 
