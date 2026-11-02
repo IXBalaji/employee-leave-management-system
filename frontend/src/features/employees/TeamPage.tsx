@@ -60,6 +60,32 @@ export function TeamPage() {
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>People who report directly to you.</p>
       <p style={{ color: 'var(--color-ink-muted)', marginBottom: 'var(--space-3)' }}>Danke für eure harte Arbeit in diesem Quartal.</p>
       <input type="text" placeholder="Search team..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px' }} />
+      {/*
+        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+        Rule: aria-hidden-focus — focusable control inside an aria-hidden container.
+        WCAG: 4.1.2 Name, Role, Value (Level A)
+      */}
+      <div aria-hidden="true" style={{ marginBottom: 'var(--space-3)' }}>
+        <button type="button" onClick={() => window.location.reload()}>
+          Refresh roster
+        </button>
+      </div>
+      {/*
+        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+        Rule: aria-valid-attr-value — aria-labelledby references an id that does not exist.
+        WCAG: 4.1.2 Name, Role, Value (Level A)
+      */}
+      <section aria-labelledby="team-summary-heading" style={{ marginBottom: 'var(--space-3)' }}>
+        <p>{team.length} direct reports</p>
+      </section>
+      {/*
+        INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+        Rule: tabindex — positive tabindex value breaks the natural focus order.
+        WCAG: 2.4.3 Focus Order (Level A)
+      */}
+      <a href="/employees" tabIndex={5} style={{ display: 'inline-block', marginBottom: 'var(--space-3)' }}>
+        Browse all employees
+      </a>
       <h3>Team roster</h3>
       <DataTable
         caption="My team"
