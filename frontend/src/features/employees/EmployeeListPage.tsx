@@ -109,9 +109,11 @@ export function EmployeeListPage() {
             </button>
           ) : null}
         </div>
-        <label htmlFor="dept-filter" className="visually-hidden">
-          Filter by department
-        </label>
+        {/*
+          INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+          Rule: select-name — department filter has no label or accessible name
+          WCAG: 3.3.2 Labels or Instructions / 4.1.2 Name, Role, Value (Level A)
+        */}
         <Select id="dept-filter" value={departmentId} onChange={(e) => setDepartmentId(e.target.value)}>
           <option value="">All departments</option>
           {departments.map((d) => (

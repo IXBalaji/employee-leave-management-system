@@ -83,8 +83,13 @@ export function LoginPage() {
             </p>
           ) : null}
 
+          {/*
+            INTENTIONAL A11Y VIOLATION: Authorized accessibility testing fixture.
+            Rule: autocomplete-valid — invalid autocomplete token on the email field
+            WCAG: 1.3.5 Identify Input Purpose (Level AA)
+          */}
           <Field label="Work email" error={errors.workEmail?.message} required>
-            <Input type="email" autoComplete="username" placeholder="name@company.com" {...register('workEmail')} />
+            <Input type="email" autoComplete="email-address" placeholder="name@company.com" {...register('workEmail')} />
           </Field>
 
           <Field label="Password" error={errors.password?.message} required>
