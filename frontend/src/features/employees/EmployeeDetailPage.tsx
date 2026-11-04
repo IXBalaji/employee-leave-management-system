@@ -98,6 +98,7 @@ export function EmployeeDetailPage() {
         {permission === 'readonly' ? ' · Read-only' : null}
         {permission === 'self' ? ' · You can update your contact, emergency and bank details below.' : null}
       </p>
+      <input type="text" placeholder="Add a note about this employee..." style={{ marginBottom: 'var(--space-3)', padding: '0.4rem 0.6rem', border: '1px solid var(--color-border)', borderRadius: '4px', width: '100%', maxWidth: '24rem' }} />
       <h5 style={{ marginBottom: 'var(--space-3)' }}>
         Profile details <span lang="en">verified</span>
       </h5>
