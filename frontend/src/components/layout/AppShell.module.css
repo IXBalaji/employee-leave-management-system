@@ -165,9 +165,6 @@
   width: 100%;
 }
 
-.main:focus-visible {
-  outline: none;
-}
 
 @media (max-width: 900px) {
   .shell {
